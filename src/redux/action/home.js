@@ -62,7 +62,9 @@ export const hideCitySelector = () => {
 //选择城市后回填数据
 export const setSelectedCity = city => {
     return (dispatch, getState) => {
-        const { currentSelectingLeftCity } = getState();
+        const { currentSelectingLeftCity } = getState()
+            .get('homeState')
+            .toJS();
         //选择左边就把数据补充到左侧，反之右侧
         currentSelectingLeftCity
             ? dispatch(setFrom(city))
@@ -105,11 +107,14 @@ export const setDepartDate = departDate => {
 //异步请求数据
 export const fetchCityData = () => {
     return (dispatch, getState) => {
-        const { isLoadingCityData } = getState();
-        if (isLoadingCityData) return;
+        const { isLoadingCityData } = getState()
+            .get('homeState')
+            .toJS();
+        console.log(isLoadingCityData);
+        if (isLoadingCityData) return; //正在加载取消请求
         const cacheData = JSON.parse(
             localStorage.getItem('city_data_cache') || '{}'
-        );
+        ); //从本地取数据
         if (Date.now() < cacheData.expires) {
             //验证过期
             dispatch(setCityData(cacheData.data));

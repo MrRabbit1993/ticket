@@ -8,9 +8,9 @@ import CitySelector from '@/components/CitySelector';
 import {
     exchangeFromTo,
     showCitySelector,
-    // hideCitySelector,
-    // fetchCityData,
-    // setSelectedCity,
+    hideCitySelector,
+    fetchCityData,
+    setSelectedCity,
     // showDateSelector,
     // hideDateSelector,
     // setDepartDate,
@@ -40,7 +40,18 @@ function Index(props) {
     );
 
     //城市选择的方法集合
-    const citySelectorCallBacks = {};
+    const citySelectorCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    onBack: hideCitySelector,
+                    fetchCityData,
+                    onSelect: setSelectedCity,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>

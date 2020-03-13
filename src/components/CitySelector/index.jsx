@@ -1,10 +1,45 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './index.module.less';
+import CityList from './../CityList';
 const CitySelector = memo(function CitySelector(props) {
-    const { show, onBack, fetchCityData } = props;
-    const setSearchKey = () => {};
+    const {
+        show,
+        cityData,
+        onBack,
+        fetchCityData,
+        isLoading,
+        onSelect,
+    } = props;
+    useEffect(() => {
+        if (!show || cityData || isLoading) return;
+        fetchCityData(); //亲求数据
+    }, [show, cityData, isLoading, fetchCityData]);
+
+    const [searchKey, setSearchKey] = useState(''); //关键字搜索
+    const key = useMemo(() => searchKey.trim(), [searchKey]); //判断为空
+    const toAlpha = useCallback(alpha => {
+        //字母搜索   //滚动
+        document.querySelector(`#${alpha}`).scrollIntoView();
+    }, []);
+    const renderCitySections = () => {
+        //渲染城市
+        if (isLoading) {
+            return <div>loading</div>;
+        }
+        if (cityData) {
+            return (
+                <CityList
+                    sections={cityData.cityList}
+                    onSelect={onSelect}
+                    toAlpha={toAlpha}
+                ></CityList>
+            );
+        }
+        return <div>error</div>;
+    };
+
     return (
         <div className={classnames(styles['city-selector'], { hidden: !show })}>
             <div className={styles['city-search']}>
@@ -21,29 +56,31 @@ const CitySelector = memo(function CitySelector(props) {
                 <div className={styles['search-input-wrapper']}>
                     <input
                         type="text"
-                        // value={searchKey}
+                        value={searchKey}
                         className={styles['search-input']}
                         placeholder="城市、车站的中文或拼音"
-                        // onChange={e => setSearchKey(e.target.value)}
+                        onChange={e => setSearchKey(e.target.value)}
                     />
                 </div>
-                {/* , { hidden: key.length === 0 } */}
                 <i
-                    className={classnames(styles['search-clean'])}
+                    className={classnames(styles['search-clean'], {
+                        hidden: key.length === 0,
+                    })}
                     onClick={() => setSearchKey('')}
                 >
                     &#xf063;
                 </i>
             </div>
+            <div className={styles.scoll}>{renderCitySections()}</div>
         </div>
     );
 });
 CitySelector.propTypes = {
-    // show: PropTypes.bool.isRequired,
-    // isLoading: PropTypes.bool.isRequired,
-    // onBack: PropTypes.func.isRequired,
-    // fetchCityData: PropTypes.func.isRequired,
-    // cityData: PropTypes.object,
-    // onSelect: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    onBack: PropTypes.func.isRequired,
+    fetchCityData: PropTypes.func.isRequired,
+    cityData: PropTypes.object,
+    onSelect: PropTypes.func.isRequired,
 };
 export default CitySelector;
