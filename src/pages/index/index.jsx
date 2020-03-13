@@ -1,37 +1,71 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styles from './index.module.less';
 import Header from '@/components/Header';
 import Journey from './components/Journey';
+import CitySelector from '@/components/CitySelector';
+import {
+    exchangeFromTo,
+    showCitySelector,
+    // hideCitySelector,
+    // fetchCityData,
+    // setSelectedCity,
+    // showDateSelector,
+    // hideDateSelector,
+    // setDepartDate,
+    // toggleHighSpeed,
+} from '@/redux/action/home';
+console.log(showCitySelector);
 function Index(props) {
-    const { a } = props;
-    const from = '北京';
-    const to = '成都';
-    const callBacks = {};
+    console.log(props);
+    const {
+        from,
+        to,
+        isCitySelectorVisible,
+        cityData,
+        isLoadingCityData,
+        dispatch,
+    } = props;
+    //日期选择插件的方法集合
+    const JourneyCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    exchangeFromTo,
+                    showCitySelector,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
+
+    //城市选择的方法集合
+    const citySelectorCallBacks = {};
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>
                 <Header title="火车票" />
             </div>
             <form className={styles.form}>
-                <Journey
-                    from={from}
-                    to={to}
-                    // exchangeFromTo={doExchangeFromTo}
-                    // showCitySelector={doShowCitySelector}
-                    {...callBacks}
-                />
-                {/* <Journey
-            from={from}
-            to={to}
-            // exchangeFromTo={doExchangeFromTo}
-            // showCitySelector={doShowCitySelector}
-            {...callBacks}
-        />
-        <DepartDate time={departDate} {...departDateCallBacks} />
-        <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
-        <Submit /> */}
+                <Journey from={from} to={to} {...JourneyCallBacks} />
+                {/* <DepartDate time={departDate} {...departDateCallBacks} />
+                <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
+                <Submit />  */}
             </form>
+            {/* <CitySelector
+                show={isCitySelectorVisible}
+                cityData={cityData}
+                isLoading={isLoadingCityData}
+                {...citySelectorCallBacks}
+            /> */}
         </div>
     );
 }
-export default Index;
+function mapStateToProps(state) {
+    return state.get('homeState').toJS();
+}
+function mapDispatchToProps(dispatch) {
+    return { dispatch };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

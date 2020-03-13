@@ -1,7 +1,8 @@
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
 
-import indexReducer from './index/index';
+import indexReducer from './home/index';
 const reducer = combineReducers({
-    indexReducer,
+    homeState: indexReducer,
 });
 export default reducer;
