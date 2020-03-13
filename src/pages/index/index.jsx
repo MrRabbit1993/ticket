@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import styles from './index.module.less';
 import Header from '@/components/Header';
 import Journey from './components/Journey';
+import DepartDate from './components/DepartDate';
 import CitySelector from '@/components/CitySelector';
 import {
     exchangeFromTo,
@@ -12,7 +13,7 @@ import {
     fetchCityData,
     setSelectedCity,
     // showDateSelector,
-    // hideDateSelector,
+    hideDateSelector,
     // setDepartDate,
     // toggleHighSpeed,
 } from '@/redux/action/home';
@@ -25,6 +26,9 @@ function Index(props) {
         cityData,
         isLoadingCityData,
         dispatch,
+        departDate,
+        isDateSelectorVisible,
+        highSpeed,
     } = props;
     //日期选择插件的方法集合
     const JourneyCallBacks = useMemo(
@@ -52,6 +56,17 @@ function Index(props) {
             ),
         [dispatch]
     );
+    //时间选择方法集合
+    const departDateCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    onBack: hideDateSelector,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>
@@ -59,6 +74,7 @@ function Index(props) {
             </div>
             <form className={styles.form}>
                 <Journey from={from} to={to} {...JourneyCallBacks} />
+                <DepartDate time={departDate} {...departDateCallBacks} />
                 {/* <DepartDate time={departDate} {...departDateCallBacks} />
                 <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
                 <Submit />  */}
