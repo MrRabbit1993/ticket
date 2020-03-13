@@ -12,11 +12,16 @@ const defaultState = fromJS({
     highSpeed: false,
 });
 export default (state = defaultState, action) => {
+    console.log(action);
     switch (action.type) {
         case ActionTypes.ACTION_SET_FROM:
             return state.set('from', action.payload);
         case ActionTypes.ACTION_SET_TO:
             return state.set('to', action.payload);
+        case ActionTypes.ACTION_SET_IS_CITY_SELECTOR_VISIBLE:
+            return state.set('isCitySelectorVisible', action.payload);
+        case ActionTypes.ACTION_SET_CURRENT_SELECTING_LEFT_CITY:
+            return state.set('currentSelectingLeftCity', action.payload);
         // case ActionTypes.CHANGE_LIST:
         //     return state.merge({
         //         list: action.data,

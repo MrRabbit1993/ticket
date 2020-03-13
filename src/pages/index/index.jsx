@@ -16,7 +16,6 @@ import {
     // setDepartDate,
     // toggleHighSpeed,
 } from '@/redux/action/home';
-console.log(showCitySelector);
 function Index(props) {
     console.log(props);
     const {
@@ -53,12 +52,12 @@ function Index(props) {
                 <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
                 <Submit />  */}
             </form>
-            {/* <CitySelector
+            <CitySelector
                 show={isCitySelectorVisible}
                 cityData={cityData}
                 isLoading={isLoadingCityData}
                 {...citySelectorCallBacks}
-            /> */}
+            />
         </div>
     );
 }

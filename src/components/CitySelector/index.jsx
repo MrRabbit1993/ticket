@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './index.module.less';
 const CitySelector = memo(function CitySelector(props) {
-    const { a } = props;
-    const show = 1;
-    console.log(styles['city-selector']);
-    console.log(classnames(styles['city-selector']));
-    console.log(12);
+    const { show, onBack, fetchCityData } = props;
     const setSearchKey = () => {};
     return (
         <div className={classnames(styles['city-selector'], { hidden: !show })}>
             <div className={styles['city-search']}>
-                <div className={styles['search-back']}>
+                <div className={styles['search-back']} onClick={() => onBack()}>
                     <svg width="42" height="42">
                         <polyline
                             points="25,13 16,21 25,29"
@@ -43,11 +39,11 @@ const CitySelector = memo(function CitySelector(props) {
     );
 });
 CitySelector.propTypes = {
-    show: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    onBack: PropTypes.func.isRequired,
-    fetchCityData: PropTypes.func.isRequired,
-    cityData: PropTypes.object,
-    onSelect: PropTypes.func.isRequired,
+    // show: PropTypes.bool.isRequired,
+    // isLoading: PropTypes.bool.isRequired,
+    // onBack: PropTypes.func.isRequired,
+    // fetchCityData: PropTypes.func.isRequired,
+    // cityData: PropTypes.object,
+    // onSelect: PropTypes.func.isRequired,
 };
 export default CitySelector;
