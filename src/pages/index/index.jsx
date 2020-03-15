@@ -8,6 +8,7 @@ import Journey from './components/Journey';
 import DepartDate from './components/DepartDate';
 import CitySelector from '@/components/CitySelector';
 import DateSelector from '@/components/DateSelector';
+import HighSpeed from './components/HighSpeed';
 import {
     exchangeFromTo,
     showCitySelector,
@@ -17,7 +18,7 @@ import {
     showDateSelector,
     hideDateSelector,
     setDepartDate,
-    // toggleHighSpeed,
+    toggleHighSpeed,
 } from '@/redux/action/home';
 function Index(props) {
     console.log(props);
@@ -80,12 +81,27 @@ function Index(props) {
             ),
         [dispatch]
     );
-    const onSelectDate = useCallback(day => {
-        if (!day) return; //无效的时间
-        if (day < h0) return; //过去 时间
-        dispatch(setDepartDate(day));
-        dispatch(hideDateSelector(day));
-    }, [dispatch]);
+    //日期的选择事件
+    const onSelectDate = useCallback(
+        day => {
+            if (!day) return; //无效的时间
+            if (day < h0) return; //过去 时间
+            dispatch(setDepartDate(day));
+            dispatch(hideDateSelector(day));
+        },
+        [dispatch]
+    );
+    //只看高铁动车的事件
+    const highSpeedCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    toggle: toggleHighSpeed,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>
@@ -94,9 +110,9 @@ function Index(props) {
             <form className={styles.form}>
                 <Journey from={from} to={to} {...JourneyCallBacks} />
                 <DepartDate time={departDate} {...departDateCallBacks} />
-                {/* <DepartDate time={departDate} {...departDateCallBacks} />
                 <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
-                <Submit />  */}
+
+                {/* <Submit />   */}
             </form>
             <CitySelector
                 show={isCitySelectorVisible}

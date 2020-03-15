@@ -8,7 +8,6 @@ import { h0 } from '@/units/fp';
 
 function DepartDate(props) {
     const { time, onClick } = props;
-    console.log(onClick);
     const h0ofDepar = h0(time); //取掉小时分钟秒毫秒
     const departDate = new Date(h0ofDepar);
     const departDateString = useMemo(() => dayjs(time).format('YYYY-MM-DD'), [

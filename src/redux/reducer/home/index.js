@@ -27,16 +27,8 @@ export default (state = defaultState, action) => {
             return state.set('isDateSelectorVisible', action.payload);
         case ActionTypes.ACTION_SET_DEPART_DATE: //设置选择其实
             return state.set('departDate', action.payload);
-        // case ActionTypes.CHANGE_LIST:
-        //     return state.merge({
-        //         list: action.data,
-        //         totalPage: action.totalPage,
-        //     });
-
-        // case ActionTypes.MOUSE_LEAVE:
-        //     return state.set('mouseIn', false);
-        // case ActionTypes.CHANGE_PAGE:
-        //     return state.set('page', action.page);
+        case ActionTypes.ACTION_SET_HIGH_SPEED: //设置只看高铁动车
+            return state.set('highSpeed', action.payload);
         default:
             return state;
     }

@@ -31,7 +31,9 @@ export const setCityData = cityData => {
 //切换只看动车
 export const toggleHighSpeed = () => {
     return (dispatch, getState) => {
-        const { highSpeed } = getState();
+        const { highSpeed } = getState()
+            .get('homeState')
+            .toJS();
         dispatch({
             type: ActionTypes.ACTION_SET_HIGH_SPEED,
             payload: !highSpeed,
