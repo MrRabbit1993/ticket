@@ -1,20 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './index.module.less';
+import { h0 } from '@/units/fp';
 import Header from '@/components/Header';
 import Journey from './components/Journey';
 import DepartDate from './components/DepartDate';
 import CitySelector from '@/components/CitySelector';
+import DateSelector from '@/components/DateSelector';
 import {
     exchangeFromTo,
     showCitySelector,
     hideCitySelector,
     fetchCityData,
     setSelectedCity,
-    // showDateSelector,
+    showDateSelector,
     hideDateSelector,
-    // setDepartDate,
+    setDepartDate,
     // toggleHighSpeed,
 } from '@/redux/action/home';
 function Index(props) {
@@ -61,12 +63,29 @@ function Index(props) {
         () =>
             bindActionCreators(
                 {
+                    onClick: showDateSelector,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
+    //日期选择器方法
+    const dateSelectorCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
                     onBack: hideDateSelector,
                 },
                 dispatch
             ),
         [dispatch]
     );
+    const onSelectDate = useCallback(day => {
+        if (!day) return; //无效的时间
+        if (day < h0) return; //过去 时间
+        dispatch(setDepartDate(day));
+        dispatch(hideDateSelector(day));
+    }, [dispatch]);
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>
@@ -84,6 +103,11 @@ function Index(props) {
                 cityData={cityData}
                 isLoading={isLoadingCityData}
                 {...citySelectorCallBacks}
+            />
+            <DateSelector
+                show={isDateSelectorVisible}
+                {...dateSelectorCallBacks}
+                onSelect={onSelectDate}
             />
         </div>
     );

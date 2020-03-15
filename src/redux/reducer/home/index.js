@@ -12,7 +12,6 @@ const defaultState = fromJS({
     highSpeed: false,
 });
 export default (state = defaultState, action) => {
-    console.log(action);
     switch (action.type) {
         case ActionTypes.ACTION_SET_FROM: //更新起始站
             return state.set('from', action.payload);
@@ -24,13 +23,16 @@ export default (state = defaultState, action) => {
             return state.set('currentSelectingLeftCity', action.payload);
         case ActionTypes.ACTION_SET_CITY_DATA: //更新城市数组
             return state.set('cityData', action.payload);
+        case ActionTypes.ACTION_SET_IS_DATE_SELECTOR_VISIBLE: //打开/关闭时间浮层
+            return state.set('isDateSelectorVisible', action.payload);
+        case ActionTypes.ACTION_SET_DEPART_DATE: //设置选择其实
+            return state.set('departDate', action.payload);
         // case ActionTypes.CHANGE_LIST:
         //     return state.merge({
         //         list: action.data,
         //         totalPage: action.totalPage,
         //     });
-        // case ActionTypes.MOUSE_ENTER:
-        //     return state.set('mouseIn', true);
+
         // case ActionTypes.MOUSE_LEAVE:
         //     return state.set('mouseIn', false);
         // case ActionTypes.CHANGE_PAGE:

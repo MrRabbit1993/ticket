@@ -2,12 +2,13 @@ import React, { useMemo } from 'react';
 import PropTyps from 'prop-types';
 import dayjs from 'dayjs';
 
-import styles from './../DepartDate';
+import styles from './index.module.less';
 
 import { h0 } from '@/units/fp';
 
 function DepartDate(props) {
     const { time, onClick } = props;
+    console.log(onClick);
     const h0ofDepar = h0(time); //取掉小时分钟秒毫秒
     const departDate = new Date(h0ofDepar);
     const departDateString = useMemo(() => dayjs(time).format('YYYY-MM-DD'), [
@@ -19,10 +20,10 @@ function DepartDate(props) {
         ['日', '一', '二', '三', '四', '五', '六'][departDate.getDay()] +
         (isTodaye ? '(今天)' : '');
     return (
-        <div className="depart-date" onClick={onClick}>
+        <div className={styles['depart-date']} onClick={onClick}>
             <input type="hidden" name="date" value={departDateString} />
             {departDateString}
-            <span className="depart-week">{weekString}</span>
+            <span className={styles['depart-week']}>{weekString}</span>
         </div>
     );
 }

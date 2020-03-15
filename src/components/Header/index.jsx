@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import styles from './index.module.less';
 
 function Header(props) {
-    const { title } = props;
-    const onBack = () => {
-        console.log(12);
-    };
+    let { title, onBack } = props;
+    if (!onBack) {
+        onBack = () => {
+            console.log(12);
+        };
+    }
     return (
         <div className={styles.header}>
             <div className={styles.headerBack} onClick={onBack}>
@@ -26,5 +28,6 @@ function Header(props) {
 }
 Header.propTypes = {
     title: PropTypes.string.isRequired,
+    onBack: PropTypes.func,
 };
 export default Header;
