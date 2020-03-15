@@ -9,6 +9,7 @@ import DepartDate from './components/DepartDate';
 import CitySelector from '@/components/CitySelector';
 import DateSelector from '@/components/DateSelector';
 import HighSpeed from './components/HighSpeed';
+import Submit from './components/Submit';
 import {
     exchangeFromTo,
     showCitySelector,
@@ -32,6 +33,7 @@ function Index(props) {
         departDate,
         isDateSelectorVisible,
         highSpeed,
+        history,
     } = props;
     //日期选择插件的方法集合
     const JourneyCallBacks = useMemo(
@@ -102,6 +104,9 @@ function Index(props) {
             ),
         [dispatch]
     );
+    const submit = useCallback(() => {
+        history.push({ pathname: '/query' });
+    }, [history]);
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>
@@ -111,8 +116,7 @@ function Index(props) {
                 <Journey from={from} to={to} {...JourneyCallBacks} />
                 <DepartDate time={departDate} {...departDateCallBacks} />
                 <HighSpeed highSpeed={highSpeed} {...highSpeedCallBacks} />
-
-                {/* <Submit />   */}
+                <Submit onSubmit={submit} />
             </form>
             <CitySelector
                 show={isCitySelectorVisible}

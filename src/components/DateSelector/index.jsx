@@ -20,7 +20,7 @@ function DateSelector(props) {
     monthSequence.push(now.getTime());
     return (
         <div className={classnames(styles['date-selector'], { hidden: !show })}>
-            <Header title="日期选择" onBack={onBack} />
+            <Header title="日期选择" onBack={onBack} showBack={true} />
             <div className={styles['date-selector-tables']}>
                 <DateSelectContext.Provider value={{ onSelect }}>
                     {monthSequence.map(month => {
