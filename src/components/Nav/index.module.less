@@ -1,0 +1,30 @@
+.nav {
+    display: flex;
+    z-index: 1;
+    min-width: 290px;
+    padding: 0 10px 0 15px;
+    line-height: 44px;
+    height: 44px;
+    background: #f8f8f8;
+    text-align: center;
+    color: #3cc;
+
+    .nav-prev,
+    .nav-next {
+        margin-top: 13px;
+        color: #3cc;
+        height: 18px;
+        line-height: 18px;
+
+        .nav-disabled {
+            opacity: 0.3;
+        }
+    }
+
+    .nav-current {
+        color: #3cc;
+        position: relative;
+        display: block;
+        margin: 0 80px;
+    }
+}
