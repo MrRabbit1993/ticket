@@ -23,11 +23,9 @@ const defaultState = fromJS({
 export default (state = defaultState, action) => {
     console.log('action', action);
     switch (action.type) {
-        // case ActionTypes.ACTION_SET_TRAIN_LIST: //更新车次列表
-        // console.log(state.toJS())
-        // console.log(action.payload)
-        // return state;
-        // return state.set('trainList', action.payload);
+        case ActionTypes.ACTION_SET_TRAIN_LIST: //更新车次列表
+            console.log(action.payload);
+            return state.set('trainList', fromJS(action.payload));
         // case ActionTypes.ACTION_SET_TICKET_TYPES: //更新车票类型
         //     return state.set('ticketTypes', action.payload);
         // case ActionTypes.ACTION_SET_TRAIN_TYPES: //更新车票类型
@@ -35,11 +33,7 @@ export default (state = defaultState, action) => {
         // case ActionTypes.ACTION_SET_DEPART_STATIONS: //更新起始站
         //     return state.set('departStations', action.payload);
         case ActionTypes.ACTION_SET_ARRIVE_STATIONS: //更新到达车站
-            console.log('执行');
-            // state.toJS().arriveStations = action.payload
-            // return state.set('arriveStations',fromJS([{value: "南京南", name: "南京南"},{value: "南京", name: "南京"}
-            // ]));
-            return state.set('arriveStations', 1);
+            return state.set('arriveStations', fromJS(action.payload));
         // return state
         // return state.toJS().arriveStations
         // case ActionTypes.ACTION_SET_TO: //更新终点站

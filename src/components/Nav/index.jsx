@@ -35,4 +35,11 @@ function Nav(props) {
         </div>
     );
 }
+Nav.propTypes = {
+    date: PropTypes.number.isRequired,
+    prev: PropTypes.func.isRequired,
+    next: PropTypes.func.isRequired,
+    isPrevDisabled: PropTypes.bool.isRequired,
+    isNextDisabled: PropTypes.bool.isRequired,
+};
 export default Nav;

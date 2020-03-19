@@ -4,15 +4,16 @@ import URI from 'urijs';
 import dayjs from 'dayjs';
 import Header from '@/components/Header';
 import Nav from '@/components/Nav';
-// import useNav from '@/common/customHooks/useNav';
+import useNav from '@/common/customHooks/useNav';
+import List from './components/List';
 import {
-    // setTrainList,
+    setTrainList,
     // setTicketTypes,
     // setTrainTypes,
     // setDepartStations,
     setArriveStations,
-    // prevDate,
-    // nextDate,
+    prevDate,
+    nextDate,
     // toggleOrderType,
     // toggleHighSpeed,
     // toggleOnlyTickets,
@@ -48,7 +49,7 @@ function Query(props) {
         // trainTypes,
         // departStations,
         // arriveStations,
-        // trainList,
+        trainList,
         // isFiltersVisible,
     } = props;
     console.log(props);
@@ -83,29 +84,12 @@ function Query(props) {
             .setSearch('arriveTimeStart', arriveTimeStart)
             .setSearch('arriveTimeEnd', arriveTimeEnd)
             .toString();
-        console.log([
-            from,
-            to,
-            departDate,
-            highSpeed,
-            searchParsed,
-            orderType,
-            onlyTickets,
-            checkedTicketTypes,
-            checkedTrainTypes,
-            checkedDepartStations,
-            checkedArriveStations,
-            departTimeStart,
-            departTimeEnd,
-            arriveTimeStart,
-            arriveTimeEnd,
-        ]);
         //请求
         // return
         fetch(url)
             .then(response => response.json())
             .then(response => {
-                console.log(response);
+                console.log('请求');
                 const {
                     dataMap: {
                         directTrainInfo: {
@@ -119,12 +103,12 @@ function Query(props) {
                         },
                     },
                 } = response;
-                // console.log(trains)
+                console.log(trains);
                 // console.log(ticketType)
                 // console.log(trainType)
                 // console.log(depStation)
-                console.log(arrStation);
-                // dispatch(setTrainList(trains));//设置车站列表数据
+                console.log('==============', arrStation);
+                dispatch(setTrainList(trains)); //设置车站列表数据
                 // dispatch(setTicketTypes(ticketType));//设置票类型
                 // dispatch(setTrainTypes(trainType));//设置车次
                 // dispatch(setDepartStations(depStation));//设置起始站
@@ -135,7 +119,6 @@ function Query(props) {
         to,
         departDate,
         highSpeed,
-        searchParsed,
         orderType,
         onlyTickets,
         checkedTicketTypes,
@@ -148,14 +131,25 @@ function Query(props) {
         arriveTimeEnd,
         dispatch,
     ]);
-    // const { isPrevDisabled, isNextDisabled, prev, next } = useNav(departDate,dispatch, prevDate,nextDate);
+    const { isPrevDisabled, isNextDisabled, prev, next } = useNav(
+        departDate,
+        dispatch,
+        prevDate,
+        nextDate
+    );
     return (
         <div>
             <div className="header-wrapper">
                 <Header title={`${from} ⇀ ${to}`} showBack={true} />
             </div>
-            {/* date, prev, next, isPrevDisabled, isNextDisabled */}
-            <Nav date={departDate} />
+            <Nav
+                date={departDate}
+                isPrevDisabled={isPrevDisabled}
+                isNextDisabled={isNextDisabled}
+                prev={prev}
+                next={next}
+            />
+            <List list={trainList} />
         </div>
     );
 }

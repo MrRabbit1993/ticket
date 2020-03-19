@@ -4,8 +4,9 @@ import { setDepartDate } from './home';
 //设置下一天
 export function nextDate() {
     return (dispatch, getState) => {
-        console.log('内容', getState);
-        const { departDate } = getState();
+        const { departDate } = getState()
+            .get('homeState')
+            .toJS();
 
         dispatch(setDepartDate(h0(departDate) + 86400 * 1000));
     };
@@ -13,8 +14,9 @@ export function nextDate() {
 //设置上一天
 export function prevDate() {
     return (dispatch, getState) => {
-        console.log('内容', getState);
-        const { departDate } = getState();
+        const { departDate } = getState()
+            .get('homeState')
+            .toJS();
 
         dispatch(setDepartDate(h0(departDate) - 86400 * 1000));
     };
@@ -94,7 +96,7 @@ export function setCheckedDepartStations(checkedDepartStations) {
     };
 }
 export function setArriveStations(arriveStations) {
-    console.log('ac', arriveStations);
+    console.log('ac=================', arriveStations);
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_STATIONS,
         payload: arriveStations,
