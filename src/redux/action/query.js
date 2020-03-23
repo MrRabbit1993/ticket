@@ -96,7 +96,6 @@ export function setCheckedDepartStations(checkedDepartStations) {
     };
 }
 export function setArriveStations(arriveStations) {
-    console.log('ac=================', arriveStations);
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_STATIONS,
         payload: arriveStations,
@@ -134,8 +133,9 @@ export function setArriveTimeEnd(arriveTimeEnd) {
 }
 export function toggleIsFiltersVisible() {
     return (dispatch, getState) => {
-        const { isFiltersVisible } = getState();
-
+        const { isFiltersVisible } = getState()
+            .get('queryState')
+            .toJS();
         dispatch({
             type: ActionTypes.ACTION_SET_IS_FILTERS_VISIBLE,
             payload: !isFiltersVisible,

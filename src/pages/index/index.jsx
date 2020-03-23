@@ -22,7 +22,6 @@ import {
     toggleHighSpeed,
 } from '@/redux/action/home';
 function Index(props) {
-    console.log(props);
     const {
         from,
         to,

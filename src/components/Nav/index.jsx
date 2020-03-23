@@ -4,10 +4,8 @@ import classnames from 'classnames';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import styles from './index.module.less';
-console.log(styles);
 function Nav(props) {
     const { date, prev, next, isPrevDisabled, isNextDisabled } = props;
-    console.log(props);
     const currentString = useMemo(() => {
         //当前选择的时间
         const day = dayjs(date);

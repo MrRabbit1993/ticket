@@ -8,24 +8,25 @@ import useNav from '@/common/customHooks/useNav';
 import List from './components/List';
 import {
     setTrainList,
-    // setTicketTypes,
-    // setTrainTypes,
-    // setDepartStations,
+    setTicketTypes,
+    setTrainTypes,
+    setDepartStations,
     setArriveStations,
     prevDate,
     nextDate,
-    // toggleOrderType,
-    // toggleHighSpeed,
-    // toggleOnlyTickets,
-    // toggleIsFiltersVisible,
-    // setCheckedTicketTypes,
-    // setCheckedTrainTypes,
-    // setCheckedDepartStations,
-    // setCheckedArriveStations,
-    // setDepartTimeStart,
-    // setDepartTimeEnd,
-    // setArriveTimeStart,
-    // setArriveTimeEnd,
+    setSearchParsed,
+    toggleOrderType,
+    toggleHighSpeed,
+    toggleOnlyTickets,
+    toggleIsFiltersVisible,
+    setCheckedTicketTypes,
+    setCheckedTrainTypes,
+    setCheckedDepartStations,
+    setCheckedArriveStations,
+    setDepartTimeStart,
+    setDepartTimeEnd,
+    setArriveTimeStart,
+    setArriveTimeEnd,
 } from '@/redux/action/query';
 function Query(props) {
     const {
@@ -52,10 +53,9 @@ function Query(props) {
         trainList,
         // isFiltersVisible,
     } = props;
-    console.log(props);
     //请求接口
     useEffect(() => {
-        // if (!searchParsed) return; //如果没解析完地址
+        if (searchParsed) return; //请求完成
         const url = new URI('/rest/query')
             .setSearch('from', from)
             .setSearch('to', to)
@@ -89,7 +89,6 @@ function Query(props) {
         fetch(url)
             .then(response => response.json())
             .then(response => {
-                console.log('请求');
                 const {
                     dataMap: {
                         directTrainInfo: {
@@ -103,15 +102,11 @@ function Query(props) {
                         },
                     },
                 } = response;
-                console.log(trains);
-                // console.log(ticketType)
-                // console.log(trainType)
-                // console.log(depStation)
-                console.log('==============', arrStation);
+                dispatch(setSearchParsed(true));
                 dispatch(setTrainList(trains)); //设置车站列表数据
-                // dispatch(setTicketTypes(ticketType));//设置票类型
-                // dispatch(setTrainTypes(trainType));//设置车次
-                // dispatch(setDepartStations(depStation));//设置起始站
+                dispatch(setTicketTypes(ticketType)); //设置票类型
+                dispatch(setTrainTypes(trainType)); //设置车次
+                dispatch(setDepartStations(depStation)); //设置起始站
                 dispatch(setArriveStations(arrStation)); //设置到达站
             });
     }, [
@@ -130,6 +125,8 @@ function Query(props) {
         arriveTimeStart,
         arriveTimeEnd,
         dispatch,
+        ,
+        searchParsed,
     ]);
     const { isPrevDisabled, isNextDisabled, prev, next } = useNav(
         departDate,

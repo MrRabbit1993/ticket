@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.module.less';
 import CityItem from './../CityItem';
-console.log(styles);
 const CitySection = memo(function CitySection(props) {
     const { title, cities = [], onSelect } = props;
     return (

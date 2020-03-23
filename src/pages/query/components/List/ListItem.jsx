@@ -24,7 +24,6 @@ const ListItem = memo(function ListItem(props) {
                 .toString(),
         [aStation, dStation, trainNumber, date]
     );
-    console.log(url);
 
     return (
         <li className={styles['list-item']}>

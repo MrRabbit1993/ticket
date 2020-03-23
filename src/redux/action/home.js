@@ -1,7 +1,6 @@
 import * as ActionTypes from '../constants/home';
 //设置起始站
 export const setFrom = from => {
-    console.log('from', from);
     return {
         type: ActionTypes.ACTION_SET_FROM,
         payload: from,
@@ -112,7 +111,6 @@ export const fetchCityData = () => {
         const { isLoadingCityData } = getState()
             .get('homeState')
             .toJS();
-        console.log(isLoadingCityData);
         if (isLoadingCityData) return; //正在加载取消请求
         const cacheData = JSON.parse(
             localStorage.getItem('city_data_cache') || '{}'
