@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, Fragment } from 'react';
 import { connect } from 'react-redux';
 import URI from 'urijs';
+import { bindActionCreators } from 'redux';
 import dayjs from 'dayjs';
 import Header from '@/components/Header';
 import Nav from '@/components/Nav';
+import Buttom from './components/Bottom';
 import useNav from '@/common/customHooks/useNav';
 import List from './components/List';
+import styles from './index.module.less';
+
 import {
     setTrainList,
     setTicketTypes,
@@ -16,7 +20,6 @@ import {
     nextDate,
     setSearchParsed,
     toggleOrderType,
-    toggleHighSpeed,
     toggleOnlyTickets,
     toggleIsFiltersVisible,
     setCheckedTicketTypes,
@@ -28,6 +31,8 @@ import {
     setArriveTimeStart,
     setArriveTimeEnd,
 } from '@/redux/action/query';
+import { toggleHighSpeed } from '@/redux/action/home';
+console.log(styles);
 function Query(props) {
     const {
         from,
@@ -46,12 +51,12 @@ function Query(props) {
         departTimeEnd,
         arriveTimeStart,
         arriveTimeEnd,
-        // ticketTypes,
-        // trainTypes,
-        // departStations,
-        // arriveStations,
+        ticketTypes,
+        trainTypes,
+        departStations,
+        arriveStations,
         trainList,
-        // isFiltersVisible,
+        isFiltersVisible,
     } = props;
     //请求接口
     useEffect(() => {
@@ -134,19 +139,63 @@ function Query(props) {
         prevDate,
         nextDate
     );
+    const bottomCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    //下车按钮事件传递
+                    toggleOrderType,
+                    toggleHighSpeed,
+                    toggleOnlyTickets,
+                    toggleIsFiltersVisible,
+                    setCheckedTicketTypes,
+                    setCheckedTrainTypes,
+                    setCheckedDepartStations,
+                    setCheckedArriveStations,
+                    setDepartTimeStart,
+                    setDepartTimeEnd,
+                    setArriveTimeStart,
+                    setArriveTimeEnd,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
     return (
-        <div>
+        <div className={styles.container}>
             <div className="header-wrapper">
                 <Header title={`${from} ⇀ ${to}`} showBack={true} />
             </div>
             <Nav
                 date={departDate}
                 isPrevDisabled={isPrevDisabled}
+                z
                 isNextDisabled={isNextDisabled}
                 prev={prev}
                 next={next}
             />
-            <List list={trainList} />
+            <div className={styles['list-wrapper']}>
+                <List list={trainList} />
+            </div>
+            <Buttom
+                isFiltersVisible={isFiltersVisible}
+                highSpeed={highSpeed}
+                orderType={orderType}
+                onlyTickets={onlyTickets}
+                checkedTicketTypes={checkedTicketTypes}
+                checkedTrainTypes={checkedTrainTypes}
+                checkedDepartStations={checkedDepartStations}
+                checkedArriveStations={checkedArriveStations}
+                departTimeStart={departTimeStart}
+                departTimeEnd={departTimeEnd}
+                arriveTimeStart={arriveTimeStart}
+                arriveTimeEnd={arriveTimeEnd}
+                ticketTypes={ticketTypes}
+                trainTypes={trainTypes}
+                departStations={departStations}
+                arriveStations={arriveStations}
+                {...bottomCallBacks}
+            />
         </div>
     );
 }
