@@ -6,7 +6,7 @@ const defaultState = fromJS({
     onlyTickets: false, //显示有票
     ticketTypes: [], //票类型
     checkedTicketTypes: {}, //选择的类型
-    trainTypes: null, //车类型
+    trainTypes: [], //车类型
     checkedTrainTypes: {},
     departStations: [], //出发车站
     checkedDepartStations: {}, //选中的车站
@@ -33,8 +33,8 @@ export default (state = defaultState, action) => {
             return state.set('ticketTypes', action.payload);
         case ActionTypes.ACTION_SET_ORDER_TYPE: //更排序
             return state.set('orderType', action.payload);
-        // case ActionTypes.ACTION_SET_DEPART_STATIONS: //更新起始站
-        //     return state.set('departStations', action.payload);
+        case ActionTypes.ACTION_SET_ONLY_TICKETS: //只看又票
+            return state.set('onlyTickets', action.payload);
         case ActionTypes.ACTION_SET_ARRIVE_STATIONS: //更新到达车站
             return state.set('arriveStations', fromJS(action.payload));
         default:

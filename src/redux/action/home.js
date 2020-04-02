@@ -1,4 +1,5 @@
 import * as ActionTypes from '../constants/home';
+import { setSearchParsed } from './query';
 //设置起始站
 export const setFrom = from => {
     return {
@@ -37,6 +38,7 @@ export const toggleHighSpeed = () => {
             type: ActionTypes.ACTION_SET_HIGH_SPEED,
             payload: !highSpeed,
         });
+        dispatch(setSearchParsed(false));
     };
 };
 //打开选择城市

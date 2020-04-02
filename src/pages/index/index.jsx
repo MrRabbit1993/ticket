@@ -21,6 +21,7 @@ import {
     setDepartDate,
     toggleHighSpeed,
 } from '@/redux/action/home';
+import { setSearchParsed } from '@/redux/action/query';
 function Index(props) {
     const {
         from,
@@ -105,7 +106,8 @@ function Index(props) {
     );
     const submit = useCallback(() => {
         history.push({ pathname: '/query' });
-    }, [history]);
+        dispatch(setSearchParsed(false)); //解决调回来不刷新问题
+    }, [dispatch, history]);
     return (
         <div className={styles.indexContainer}>
             <div className={styles.headerWrapper}>

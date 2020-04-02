@@ -81,7 +81,7 @@ function Buttom(props) {
                     onClick={toggleOnlyTickets}
                 >
                     <i className={styles.icon}>
-                        {highSpeed ? '\uf43d' : '\uf43c'}
+                        {onlyTickets ? '\uf43d' : '\uf43c'}
                     </i>
                     只看有票
                 </span>

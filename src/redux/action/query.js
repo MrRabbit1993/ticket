@@ -47,18 +47,21 @@ export function toggleOrderType() {
                 payload: ActionTypes.ORDER_DEPART,
             });
         }
+        dispatch(setSearchParsed(false));
     };
 }
 
 //切换只看有票
 export function toggleOnlyTickets() {
     return (dispatch, getState) => {
-        const { onlyTickets } = getState();
-
+        const { onlyTickets } = getState()
+            .get('queryState')
+            .toJS();
         dispatch({
             type: ActionTypes.ACTION_SET_ONLY_TICKETS,
             payload: !onlyTickets,
         });
+        dispatch(setSearchParsed(false));
     };
 }
 export function setTicketTypes(ticketTypes) {
