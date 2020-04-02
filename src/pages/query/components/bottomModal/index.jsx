@@ -1,7 +1,8 @@
 import React, { memo, useState, useMemo, useReducer } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import Option from './../option';
+import styles from './index.module.less';
+import Option from '../Option';
 import Slider from './../Slider';
 function checkedReducer(state, action) {
     const { type, payload } = action;
@@ -45,11 +46,6 @@ const ButtomModal = memo(function ButtomModal(props) {
         setArriveTimeEnd,
         toggleIsFiltersVisible,
     } = props;
-    //使用函数优化性能
-    // const [localCheckedTicketTypes, setLocalCheckedTicketTypes] = useState(() => {//本地坐席
-    //     return { ...checkedTicketTypes }
-    // });
-    //改写useReducer
     const [
         localCheckedTicketTypes,
         localCheckedTicketTypesDispatch,
@@ -57,9 +53,6 @@ const ButtomModal = memo(function ButtomModal(props) {
         //本地坐席
         return { ...checkedTicketTypes };
     });
-    // const [localCheckedTrainTypes, setLocalCheckedTrainTypes] = useState(() => {//车次类型
-    //     return { ...checkedTrainTypes }
-    // });
     const [localCheckedTrainTypes, localCheckedTrainTypesDispatch] = useReducer(
         checkedReducer,
         checkedTrainTypes,
@@ -186,23 +179,23 @@ const ButtomModal = memo(function ButtomModal(props) {
         setLocalArriveTimeEnd(24); //修改缓存区终点站结束时间
     };
     return (
-        <div className="bottom-modal">
-            <div className="bottom-dialog">
-                <div className="bottom-dialog-content">
-                    <div className="title">
+        <div className={styles['bottom-modal']}>
+            <div className={styles['bottom-dialog']}>
+                <div className={styles['bottom-dialog-content']}>
+                    <div className={styles.title}>
                         <span
-                            className={classnames('rest', {
-                                disabled: isResetDisabled,
+                            className={classnames(styles.rest, {
+                                [`${styles.disabled}`]: isResetDisabled,
                             })}
                             onClick={reset}
                         >
                             重置
                         </span>
-                        <span className="ok" onClick={sure}>
+                        <span className={styles.ok} onClick={sure}>
                             确定
                         </span>
                     </div>
-                    <div className="options">
+                    <div className={styles.options}>
                         {optionGroup.map(group => (
                             <Option key={group.title} {...group} />
                         ))}

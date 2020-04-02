@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './index.module.less';
 import { ORDER_DEPART } from '@/redux/constants/query';
-// import ButtomModal from './../bottomModal';
+import ButtomModal from './../bottomModal';
 function Buttom(props) {
     const {
         toggleOrderType,
@@ -98,7 +98,7 @@ function Buttom(props) {
                     综合筛选
                 </span>
             </div>
-            {/* {isFiltersVisible ? (
+            {isFiltersVisible ? (
                 <ButtomModal
                     checkedTicketTypes={checkedTicketTypes}
                     checkedTrainTypes={checkedTrainTypes}
@@ -122,7 +122,7 @@ function Buttom(props) {
                     setArriveTimeEnd={setArriveTimeEnd}
                     toggleIsFiltersVisible={toggleIsFiltersVisible}
                 />
-            ) : null} */}
+            ) : null}
         </div>
     );
 }
