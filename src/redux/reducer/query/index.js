@@ -31,8 +31,8 @@ export default (state = defaultState, action) => {
             return state.set('trainList', action.payload);
         case ActionTypes.ACTION_SET_TICKET_TYPES: //更新车票类型
             return state.set('ticketTypes', action.payload);
-        // case ActionTypes.ACTION_SET_TRAIN_TYPES: //更新车票类型
-        //     return state.set('trainTypes', action.payload);
+        case ActionTypes.ACTION_SET_ORDER_TYPE: //更排序
+            return state.set('orderType', action.payload);
         // case ActionTypes.ACTION_SET_DEPART_STATIONS: //更新起始站
         //     return state.set('departStations', action.payload);
         case ActionTypes.ACTION_SET_ARRIVE_STATIONS: //更新到达车站

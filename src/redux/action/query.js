@@ -33,7 +33,9 @@ export function setTrainList(trainList) {
 //切换订单类型
 export function toggleOrderType() {
     return (dispatch, getState) => {
-        const { orderType } = getState();
+        const { orderType } = getState()
+            .get('queryState')
+            .toJS();
         if (orderType === ActionTypes.ORDER_DEPART) {
             dispatch({
                 type: ActionTypes.ACTION_SET_ORDER_TYPE,

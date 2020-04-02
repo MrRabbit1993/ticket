@@ -32,7 +32,6 @@ import {
     setArriveTimeEnd,
 } from '@/redux/action/query';
 import { toggleHighSpeed } from '@/redux/action/home';
-console.log(styles);
 function Query(props) {
     const {
         from,
@@ -130,7 +129,6 @@ function Query(props) {
         arriveTimeStart,
         arriveTimeEnd,
         dispatch,
-        ,
         searchParsed,
     ]);
     const { isPrevDisabled, isNextDisabled, prev, next } = useNav(
