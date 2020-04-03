@@ -1,7 +1,7 @@
 import React, { memo, useState, useMemo, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import leftPad from 'left-pad';
-import './index.css';
+import styles from './index.module.less';
 import useWinSize from '@/common/customHooks/useWinSize';
 const Slider = memo(function Slider(props) {
     const {
@@ -132,19 +132,19 @@ const Slider = memo(function Slider(props) {
         setEnd(end => end + (distance / rangeWidth.current) * 100); //设置开始的位置（百分比）
     }
     return (
-        <div className="option">
+        <div className={styles.option}>
             <h3>{title}</h3>
-            <div className="range-slider">
-                <div className="slider" ref={range}>
+            <div className={styles['range-slider']}>
+                <div className={styles.slider} ref={range}>
                     <div
-                        className="slider-range"
+                        className={styles['slider-range']}
                         style={{
                             left: startPercent + '%',
                             width: endPercent - startPercent + '%',
                         }}
                     ></div>
                     <i
-                        className="slider-handle"
+                        className={styles['slider-handle']}
                         ref={startHandle}
                         style={{
                             left: startPercent + '%',
@@ -153,7 +153,7 @@ const Slider = memo(function Slider(props) {
                         <span>{startText}</span>
                     </i>
                     <i
-                        className="slider-handle"
+                        className={styles['slider-handle']}
                         ref={endHandle}
                         style={{
                             left: endPercent + '%',

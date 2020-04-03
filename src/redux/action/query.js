@@ -141,10 +141,15 @@ export function toggleIsFiltersVisible() {
         const { isFiltersVisible } = getState()
             .get('queryState')
             .toJS();
+        if (isFiltersVisible) {
+            dispatch(setSearchParsed(false));
+        }
         dispatch({
             type: ActionTypes.ACTION_SET_IS_FILTERS_VISIBLE,
             payload: !isFiltersVisible,
         });
+
+        // if()
     };
 }
 export function setSearchParsed(searchParsed) {

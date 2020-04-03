@@ -57,13 +57,9 @@ const ButtomModal = memo(function ButtomModal(props) {
         checkedReducer,
         checkedTrainTypes,
         checkedTrainTypes => {
-            //车次类型
             return { ...checkedTrainTypes };
         }
     );
-    // const [localCheckedDepartStations, setLocalCheckedDepartStations] = useState(() => {//本地出发车站
-    //     return { ...checkedDepartStations }
-    // });
     const [
         localCheckedDepartStations,
         localCheckedDepartStationsDispatch,
@@ -75,9 +71,6 @@ const ButtomModal = memo(function ButtomModal(props) {
             return { ...checkedDepartStations };
         }
     );
-    // const [localCheckedArriveStations, setLocalCheckedArriveStations] = useState(() => {//本地到达车站
-    //     return { ...checkedArriveStations }
-    // });
     const [
         localCheckedArriveStations,
         localCheckedArriveStationsDispatch,
@@ -139,7 +132,7 @@ const ButtomModal = memo(function ButtomModal(props) {
         setDepartTimeStart(localDepartTimeStart); //提交时间开始
         setDepartTimeEnd(localDepartTimeEnd); //提交起始站结束时间
         setArriveTimeStart(localArriveTimeStart); //提交终点站开始时间
-        setArriveTimeEnd(localDepartTimeEnd); //提交终点站结束时间
+        setArriveTimeEnd(localArriveTimeEnd); //提交终点站结束时间
         toggleIsFiltersVisible(); //关闭浮层
     };
     const isResetDisabled = useMemo(
@@ -165,10 +158,6 @@ const ButtomModal = memo(function ButtomModal(props) {
     );
     const reset = () => {
         if (isResetDisabled) return;
-        // setLocalCheckedTicketTypes({});//修改缓存区的坐席
-        // setLocalCheckedTrainTypes({});//修改缓存区车型
-        // setLocalCheckedDepartStations({});//修改缓存区起始站
-        // setLocalCheckedArriveStations({});//修改缓存区到达车站
         localCheckedTicketTypesDispatch({ type: 'reset' }); //修改缓存区的坐席
         localCheckedTrainTypesDispatch({ type: 'reset' }); //修改缓存区车型
         localCheckedDepartStationsDispatch({ type: 'reset' }); //修改缓存区起始站
