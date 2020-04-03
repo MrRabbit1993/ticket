@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, Fragment } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import URI from 'urijs';
 import { bindActionCreators } from 'redux';
@@ -32,7 +32,7 @@ import {
     setArriveTimeEnd,
 } from '@/redux/action/query';
 import { toggleHighSpeed } from '@/redux/action/home';
-function Query(props) {
+function Index(props) {
     const {
         from,
         to,
@@ -206,4 +206,4 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return { dispatch };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Query);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

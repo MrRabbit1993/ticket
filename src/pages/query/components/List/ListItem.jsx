@@ -1,7 +1,8 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import URI from 'urijs';
+import { withRouter } from 'react-router-dom';
 import styles from './index.module.less';
+
 const ListItem = memo(function ListItem(props) {
     const {
         dTime,
@@ -13,20 +14,23 @@ const ListItem = memo(function ListItem(props) {
         time,
         priceMsg,
         dayAfter,
+        history,
     } = props;
-    const url = useMemo(
-        () =>
-            new URI('ticket.html')
-                .setSearch('aStation', aStation)
-                .setSearch('dStation', dStation)
-                .setSearch('trainNumber', trainNumber)
-                .setSearch('date', date)
-                .toString(),
-        [aStation, dStation, trainNumber, date]
-    );
+    const _navigation = () => {
+        console.log('------------');
+        console.log('aStation', aStation);
+        console.log('dStation', dStation);
+        console.log('trainNumber', trainNumber);
+        console.log('aStation', aStation);
+        console.log('date', date);
+        console.log(props);
+        // history.push({ pathname: '/ticket' ,state :{'date':date}});
+        history.push({ pathname: '/ticket/' + date });
+        console.log('------------');
+    };
 
     return (
-        <li className={styles['list-item']}>
+        <li className={styles['list-item']} onClick={_navigation}>
             <span className={styles['item-time']}>
                 <em>{dTime}</em>
                 <br />
@@ -78,4 +82,4 @@ ListItem.propTypes = {
     priceMsg: PropTypes.string.isRequired,
     dayAfter: PropTypes.string.isRequired,
 };
-export default ListItem;
+export default withRouter(ListItem);

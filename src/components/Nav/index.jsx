@@ -10,7 +10,7 @@ function Nav(props) {
         //当前选择的时间
         const day = dayjs(date);
         return day.format('M月D日') + day.locale('zh-cn').format('ddd');
-    });
+    }, [date]);
     return (
         <div className={styles.nav}>
             <span

@@ -106,7 +106,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{css,md}": [
+    "*.{css,md,less}": [
       "prettier --write",
       "git add"
     ]
@@ -149,7 +149,7 @@
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
+      "^.+\\.module\\.(css|sass|scss|less)$"
     ],
     "modulePaths": [],
     "moduleNameMapper": {
@@ -174,11 +174,15 @@
     ]
   },
   "babel": {
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ],
     "presets": [
       "react-app"
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
