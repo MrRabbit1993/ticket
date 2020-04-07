@@ -1,5 +1,3 @@
-# eip3.0
-
 ## 目录说明:
 
 ### config 和 build
