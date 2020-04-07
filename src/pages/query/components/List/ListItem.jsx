@@ -17,16 +17,9 @@ const ListItem = memo(function ListItem(props) {
         history,
     } = props;
     const _navigation = () => {
-        console.log('------------');
-        console.log('aStation', aStation);
-        console.log('dStation', dStation);
-        console.log('trainNumber', trainNumber);
-        console.log('aStation', aStation);
-        console.log('date', date);
-        console.log(props);
-        // history.push({ pathname: '/ticket' ,state :{'date':date}});
-        history.push({ pathname: '/ticket/' + date });
-        console.log('------------');
+        history.push({
+            pathname: `/ticket/${date}/${aStation}/${dStation}/${trainNumber}`,
+        });
     };
 
     return (

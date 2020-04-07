@@ -148,8 +148,6 @@ export function toggleIsFiltersVisible() {
             type: ActionTypes.ACTION_SET_IS_FILTERS_VISIBLE,
             payload: !isFiltersVisible,
         });
-
-        // if()
     };
 }
 export function setSearchParsed(searchParsed) {
