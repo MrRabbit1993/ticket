@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# eip3.0
 
-## Available Scripts
+## 目录说明:
 
-In the project directory, you can run:
+### config 和 build
 
-### `npm start`
+webpack 的配置 (一般不改).若需要修改代理，只需要变动 config/index
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### static
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+静态资源
 
-### `npm test`
+### src
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> 源码存放的地方
 
-### `npm run build`
+#### assets
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+需要编译的静态资源文件
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+存放公共组件的地方
 
-### `npm run eject`
+#### router
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+应用的路由入口
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### pages
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+业务组件存放的地方
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### redux
 
-## Learn More
+状态管理
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 快速启动
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+启动项目
 
-### Code Splitting
+```shell
+npm run start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## 打包构建
 
-### Analyzing the Bundle Size
+构建项目
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```shell
+npm run build
+```
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+不过一般都是采取 Jenkins 自动构建
