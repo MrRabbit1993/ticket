@@ -25,10 +25,18 @@ export default (state = defaultState, action) => {
             return state.set('trainNumber', action.payload);
         case ActionTypes.ACTION_SET_DEPART_DATE: //出发日期
             return state.set('departDate', action.payload);
-        // case ActionTypes.ACTION_SET_ORDER_TYPE: //更排序
-        //     return state.set('orderType', action.payload);
-        // case ActionTypes.ACTION_SET_ONLY_TICKETS: //只看又票
-        //     return state.set('onlyTickets', action.payload);
+        case ActionTypes.ACTION_SET_ARRIVE_DATE: //到达站日期
+            return state.set('arriveDate', action.payload);
+        case ActionTypes.ACTION_SET_SEARCH_PARSED: //解析flag
+            return state.set('searchParsed', action.payload);
+        case ActionTypes.ACTION_SET_DEPART_TIME_STR: //起始站时分
+            return state.set('departTimeStr', action.payload);
+        case ActionTypes.ACTION_SET_ARRIVE_TIME_STR: //到达站时分
+            return state.set('arriveTimeStr', action.payload);
+        case ActionTypes.ACTION_SET_DURATION_STR: //耗时
+            return state.set('durationStr', action.payload);
+        case ActionTypes.ACTION_SET_IS_SCHEDULE_VISIBLE: //浮层
+            return state.set('isScheduleVisible', action.payload);
         // case ActionTypes.ACTION_SET_DEPART_STATIONS: //更新出发车站
         //     return state.set('departStations', action.payload);
         // case ActionTypes.ACTION_SET_ARRIVE_STATIONS: //更新到达车站

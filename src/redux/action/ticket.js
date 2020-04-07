@@ -63,7 +63,9 @@ export function setIsScheduleVisible(isScheduleVisible) {
 }
 export function toggleIsScheduleVisible() {
     return (dispatch, getState) => {
-        const { isScheduleVisible } = getState();
+        const { isScheduleVisible } = getState()
+            .get('ticketStatue')
+            .toJS();
 
         dispatch(setIsScheduleVisible(!isScheduleVisible));
     };
