@@ -83,7 +83,6 @@ function Index(props) {
                     arriveDate,
                     durationStr,
                 } = detail;
-                console.log(detail);
                 console.log(candidates);
                 dispatch(setDepartTimeStr(departTimeStr)); //更新起始时间（十分）
                 dispatch(setArriveTimeStr(arriveTimeStr)); //更新到达站时分
