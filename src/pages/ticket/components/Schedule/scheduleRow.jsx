@@ -67,9 +67,9 @@ const ScheduleRow = memo(function ScheduleRow(props) {
     );
 });
 ScheduleRow.propTypes = {
-    date: PropTypes.number.isRequired,
-    trainNumber: PropTypes.string.isRequired,
-    departStation: PropTypes.string.isRequired,
-    arriveStation: PropTypes.string.isRequired,
+    // date: PropTypes.number.isRequired,
+    // trainNumber: PropTypes.string.isRequired,
+    // departStation: PropTypes.string.isRequired,
+    // arriveStation: PropTypes.string.isRequired,
 };
 export default ScheduleRow;
