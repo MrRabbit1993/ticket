@@ -37,6 +37,8 @@ export default (state = defaultState, action) => {
             return state.set('durationStr', action.payload);
         case ActionTypes.ACTION_SET_IS_SCHEDULE_VISIBLE: //浮层
             return state.set('isScheduleVisible', action.payload);
+        case ActionTypes.ACTION_SET_TICKETS: //座位票
+            return state.set('tickets', action.payload);
         // case ActionTypes.ACTION_SET_DEPART_STATIONS: //更新出发车站
         //     return state.set('departStations', action.payload);
         // case ActionTypes.ACTION_SET_ARRIVE_STATIONS: //更新到达车站

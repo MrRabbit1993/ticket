@@ -24,6 +24,7 @@ import {
     setArriveTimeStr,
     setArriveDate,
     setDurationStr,
+    setTickets,
 } from '@/redux/action/ticket';
 const Schedule = lazy(() => import('./components/Schedule'));
 function Index(props) {
@@ -83,12 +84,11 @@ function Index(props) {
                     arriveDate,
                     durationStr,
                 } = detail;
-                console.log(candidates);
                 dispatch(setDepartTimeStr(departTimeStr)); //更新起始时间（十分）
                 dispatch(setArriveTimeStr(arriveTimeStr)); //更新到达站时分
                 dispatch(setArriveDate(arriveDate)); //更新到站日期
                 dispatch(setDurationStr(durationStr)); //更新耗时
-                // dispatch(setTickets(candidates)); //更新redux
+                dispatch(setTickets(candidates)); //更新票
             });
     }, [searchParsed, trainNumber, departDate, dispatch]);
     if (!searchParsed) return null;
@@ -129,7 +129,7 @@ function Index(props) {
                             <span className={styles.right}></span>
                         </Detail>
                     </div>
-                    {/* <TrainContext.Provider
+                    <TrainContext.Provider
                         value={{
                             trainNumber,
                             departStation,
@@ -138,12 +138,13 @@ function Index(props) {
                         }}
                     >
                         <Candidate tickets={tickets} />
-                    </TrainContext.Provider> */}
+                    </TrainContext.Provider>
                     {isScheduleVisible && (
                         <div
                             className={styles.mask}
                             onClick={() => dispatch(toggleIsScheduleVisible())}
                         >
+                            {/*弹出层数据 */}
                             <Suspense fallback={<div>loading</div>}>
                                 <Schedule
                                     date={departDate}

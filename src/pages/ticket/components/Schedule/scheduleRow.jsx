@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import classnames from 'classnames';
 import leftPad from 'left-pad';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './index.module.less';
 const ScheduleRow = memo(function ScheduleRow(props) {
     const {
