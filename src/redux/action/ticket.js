@@ -90,7 +90,6 @@ export function prevDate() {
         const { departDate } = getState()
             .get('ticketStatue')
             .toJS();
-        console.log(departDate);
         dispatch(setDepartDate(h0(departDate) - 86400 * 1000));
     };
 }
