@@ -9,6 +9,7 @@ import Detail from '@/components/Detail';
 import Ticket from './components/Ticket';
 import Passengers from './components/Passengers';
 import Choose from './components/Choose';
+import Account from './components/Account';
 import {
     fetchInitial,
     setSearchParsed,
@@ -44,6 +45,7 @@ const Index = props => {
         date
     } = match.params;
     useEffect(() => {
+        document.title = '订单填写';
         dispatch(setSearchParsed(true));
     }, [dispatch]);
     useEffect(() => {
@@ -111,8 +113,8 @@ const Index = props => {
                 {passengers.length > 0 && (
                     <Choose passengers={passengers} {...chooseCallBack} />
                 )}
-                {/*<Account length={passengers.length} price={price} />
-                <Menu show={isMenuVisible} {...menu} {...menuCallBacks} /> */}
+                <Account length={passengers.length} price={price} />
+                {/*<Menu show={isMenuVisible} {...menu} {...menuCallBacks} /> */}
             </div>
         </div>
     );

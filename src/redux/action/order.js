@@ -154,7 +154,9 @@ export function createChild() {
 
 export function removePassenger(id) {
     return (dispatch, getState) => {
-        const { passengers } = getState();
+        const { passengers } = getState()
+            .get('orderState')
+            .toJS();
 
         const newPassengers = passengers.filter(passenger => {
             return passenger.id !== id && passenger.followAdult !== id; //移除了成人，那么儿童也会被移除
