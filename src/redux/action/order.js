@@ -1,34 +1,5 @@
 import * as ActionTypes from '../constants/order.js';
-export function setTrainNumber(trainNumber) {
-    return {
-        type: ActionTypes.ACTION_SET_TRAIN_NUMBER,
-        payload: trainNumber,
-    };
-}
-export function setDepartStation(departStation) {
-    return {
-        type: ActionTypes.ACTION_SET_DEPART_STATION,
-        payload: departStation,
-    };
-}
-export function setArriveStation(arriveStation) {
-    return {
-        type: ActionTypes.ACTION_SET_ARRIVE_STATION,
-        payload: arriveStation,
-    };
-}
-export function setSeatType(seatType) {
-    return {
-        type: ActionTypes.ACTION_SET_SEAT_TYPE,
-        payload: seatType,
-    };
-}
-export function setDepartDate(departDate) {
-    return {
-        type: ActionTypes.ACTION_SET_DEPART_DATE,
-        payload: departDate,
-    };
-}
+
 export function setArriveDate(arriveDate) {
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_DATE,
@@ -114,7 +85,6 @@ export function createAdult() {
         const { passengers } = getState()
             .get('orderState')
             .toJS();
-        console.log('成人', passengers);
 
         for (let passenger of passengers) {
             const keys = Object.keys(passenger);
@@ -142,8 +112,9 @@ export function createAdult() {
 //添加儿童
 export function createChild() {
     return (dispatch, getState) => {
-        const { passengers } = getState();
-
+        const { passengers } = getState()
+            .get('orderState')
+            .toJS();
         let adultFound = null; //关联成人id
 
         for (let passenger of passengers) {
@@ -192,10 +163,12 @@ export function removePassenger(id) {
         dispatch(setPassengers(newPassengers));
     };
 }
-
+//更新乘客信息
 export function updatePassenger(id, data, keysToBeRemoved = []) {
     return (dispatch, getState) => {
-        const { passengers } = getState();
+        const { passengers } = getState()
+            .get('orderState')
+            .toJS();
 
         for (let i = 0; i < passengers.length; ++i) {
             if (passengers[i].id === id) {
@@ -207,7 +180,6 @@ export function updatePassenger(id, data, keysToBeRemoved = []) {
                 }
 
                 dispatch(setPassengers(newPassengers));
-
                 break;
             }
         }
