@@ -9,7 +9,7 @@ const Slider = memo(function Slider(props) {
         currentStartHours,
         currentEndHours,
         onStartChange,
-        onEndChange,
+        onEndChange
     } = props;
     const winSeize = useWinSize(); //调取浏览器缩放的hooks ，计算宽度的时候会调取
     const startHandle = useRef(); //左边滑块
@@ -46,16 +46,16 @@ const Slider = memo(function Slider(props) {
         return end;
     }, [end]);
     const startHours = useMemo(() => Math.round((startPercent * 24) / 100), [
-        startPercent,
+        startPercent
     ]); //百分比转换成小时
     const endHours = useMemo(() => Math.round((endPercent * 24) / 100), [
-        endPercent,
+        endPercent
     ]); //百分比转换成小时
     const startText = useMemo(() => leftPad(startHours, 2, '0') + ':00', [
-        startHours,
+        startHours
     ]); //带分钟
     const endText = useMemo(() => leftPad(endHours, 2, '0') + ':00', [
-        endHours,
+        endHours
     ]); //带分钟
     useEffect(() => {
         //计算滑块可以滑动的宽度 。需要依赖浏览器缩放
@@ -140,14 +140,14 @@ const Slider = memo(function Slider(props) {
                         className={styles['slider-range']}
                         style={{
                             left: startPercent + '%',
-                            width: endPercent - startPercent + '%',
+                            width: endPercent - startPercent + '%'
                         }}
                     ></div>
                     <i
                         className={styles['slider-handle']}
                         ref={startHandle}
                         style={{
-                            left: startPercent + '%',
+                            left: startPercent + '%'
                         }}
                     >
                         <span>{startText}</span>
@@ -156,7 +156,7 @@ const Slider = memo(function Slider(props) {
                         className={styles['slider-handle']}
                         ref={endHandle}
                         style={{
-                            left: endPercent + '%',
+                            left: endPercent + '%'
                         }}
                     >
                         <span>{endText}</span>
@@ -171,6 +171,6 @@ Slider.propTypes = {
     currentStartHours: PropTypes.number.isRequired,
     currentEndHours: PropTypes.number.isRequired,
     onStartChange: PropTypes.func.isRequired,
-    onEndChange: PropTypes.func.isRequired,
+    onEndChange: PropTypes.func.isRequired
 };
 export default Slider;

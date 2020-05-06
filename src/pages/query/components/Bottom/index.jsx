@@ -33,7 +33,7 @@ function Buttom(props) {
         setDepartTimeStart,
         setDepartTimeEnd,
         setArriveTimeStart,
-        setArriveTimeEnd,
+        setArriveTimeEnd
     } = props;
     const noChecked = useMemo(
         () =>
@@ -53,7 +53,7 @@ function Buttom(props) {
             departTimeStart,
             departTimeEnd,
             arriveTimeStart,
-            arriveTimeEnd,
+            arriveTimeEnd
         ]
     );
     return (
@@ -65,7 +65,7 @@ function Buttom(props) {
                 </span>
                 <span
                     className={classnames(styles.item, {
-                        [`${styles['item-on']}`]: highSpeed,
+                        [`${styles['item-on']}`]: highSpeed
                     })}
                     onClick={toggleHighSpeed}
                 >
@@ -76,7 +76,7 @@ function Buttom(props) {
                 </span>
                 <span
                     className={classnames(styles.item, {
-                        [`${styles['item-on']}`]: onlyTickets,
+                        [`${styles['item-on']}`]: onlyTickets
                     })}
                     onClick={toggleOnlyTickets}
                 >
@@ -87,8 +87,7 @@ function Buttom(props) {
                 </span>
                 <span
                     className={classnames(styles.item, {
-                        [`${styles['item-on']}`]:
-                            isFiltersVisible || !noChecked,
+                        [`${styles['item-on']}`]: isFiltersVisible || !noChecked
                     })}
                     onClick={toggleIsFiltersVisible}
                 >
@@ -154,6 +153,6 @@ Buttom.propTypes = {
     setDepartTimeStart: PropTypes.func.isRequired,
     setDepartTimeEnd: PropTypes.func.isRequired,
     setArriveTimeStart: PropTypes.func.isRequired,
-    setArriveTimeEnd: PropTypes.func.isRequired,
+    setArriveTimeEnd: PropTypes.func.isRequired
 };
 export default Buttom;

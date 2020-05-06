@@ -4,28 +4,28 @@ import { setSearchParsed } from './query';
 export const setFrom = from => {
     return {
         type: ActionTypes.ACTION_SET_FROM,
-        payload: from,
+        payload: from
     };
 };
 //设置终点站
 export const setTo = to => {
     return {
         type: ActionTypes.ACTION_SET_TO,
-        payload: to,
+        payload: to
     };
 };
 //设置遮罩层
 export const setIsLoadingCityData = isLoadingCityData => {
     return {
         type: ActionTypes.ACTION_SET_IS_LOADING_CITY_DATA,
-        payload: isLoadingCityData,
+        payload: isLoadingCityData
     };
 };
 //设置城市
 export const setCityData = cityData => {
     return {
         type: ActionTypes.ACTION_SET_CITY_DATA,
-        payload: cityData,
+        payload: cityData
     };
 };
 //切换只看动车
@@ -36,7 +36,7 @@ export const toggleHighSpeed = () => {
             .toJS();
         dispatch({
             type: ActionTypes.ACTION_SET_HIGH_SPEED,
-            payload: !highSpeed,
+            payload: !highSpeed
         });
         dispatch(setSearchParsed(false));
     };
@@ -46,12 +46,12 @@ export const showCitySelector = currentSelectingLeftCity => {
     return dispatch => {
         dispatch({
             type: ActionTypes.ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
-            payload: true,
+            payload: true
         });
 
         dispatch({
             type: ActionTypes.ACTION_SET_CURRENT_SELECTING_LEFT_CITY,
-            payload: currentSelectingLeftCity,
+            payload: currentSelectingLeftCity
         });
     };
 };
@@ -59,7 +59,7 @@ export const showCitySelector = currentSelectingLeftCity => {
 export const hideCitySelector = () => {
     return {
         type: ActionTypes.ACTION_SET_IS_CITY_SELECTOR_VISIBLE,
-        payload: false,
+        payload: false
     };
 };
 //选择城市后回填数据
@@ -80,14 +80,14 @@ export const setSelectedCity = city => {
 export const showDateSelector = () => {
     return {
         type: ActionTypes.ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
-        payload: true,
+        payload: true
     };
 };
 //关闭日期选择浮层
 export const hideDateSelector = () => {
     return {
         type: ActionTypes.ACTION_SET_IS_DATE_SELECTOR_VISIBLE,
-        payload: false,
+        payload: false
     };
 };
 //交换起始站与终点站
@@ -104,7 +104,7 @@ export const exchangeFromTo = () => {
 export const setDepartDate = departDate => {
     return {
         type: ActionTypes.ACTION_SET_DEPART_DATE,
-        payload: departDate,
+        payload: departDate
     };
 };
 //异步请求数据
@@ -131,7 +131,7 @@ export const fetchCityData = () => {
                     'city_data_cache',
                     JSON.stringify({
                         expires: Date.now() + 600 * 1000,
-                        data: cityData,
+                        data: cityData
                     }) //10分钟缓存
                 );
                 dispatch(setIsLoadingCityData(false)); //取消loading加载

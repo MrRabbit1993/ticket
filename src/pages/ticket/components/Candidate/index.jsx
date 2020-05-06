@@ -30,6 +30,6 @@ const Candidate = memo(function Candidate(props) {
     );
 });
 Candidate.propTypes = {
-    tickets: PropTypes.array,
+    tickets: PropTypes.array
 };
 export default Candidate;

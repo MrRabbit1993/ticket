@@ -27,14 +27,14 @@ const Schedule = memo(function Schedule(props) {
                                 beforeDepartStation: false,
                                 isDepartStation: true,
                                 afterArriveStation: false,
-                                isArriveStation: false,
+                                isArriveStation: false
                             });
                         } else {
                             Object.assign(result[i], {
                                 beforeDepartStation: true,
                                 isDepartStation: false,
                                 afterArriveStation: false,
-                                isArriveStation: false,
+                                isArriveStation: false
                             });
                         }
                     } else if (!arriveRow) {
@@ -44,14 +44,14 @@ const Schedule = memo(function Schedule(props) {
                                 beforeDepartStation: false,
                                 isDepartStation: false,
                                 afterArriveStation: false,
-                                isArriveStation: true,
+                                isArriveStation: true
                             });
                         } else {
                             Object.assign(result[i], {
                                 beforeDepartStation: false,
                                 isDepartStation: false,
                                 afterArriveStation: false,
-                                isArriveStation: false,
+                                isArriveStation: false
                             });
                         }
                     } else {
@@ -59,12 +59,12 @@ const Schedule = memo(function Schedule(props) {
                             beforeDepartStation: false,
                             isDepartStation: false,
                             afterArriveStation: true,
-                            isArriveStation: false,
+                            isArriveStation: false
                         });
                     }
                     Object.assign(result[i], {
                         isStartStation: i === 0,
-                        isEndStation: i === result.length - 1,
+                        isEndStation: i === result.length - 1
                     });
                 }
                 setScheduleList(result);
@@ -99,6 +99,6 @@ Schedule.propTypes = {
     date: PropTypes.number.isRequired,
     trainNumber: PropTypes.string.isRequired,
     departStation: PropTypes.string.isRequired,
-    arriveStation: PropTypes.string.isRequired,
+    arriveStation: PropTypes.string.isRequired
 };
 export default Schedule;

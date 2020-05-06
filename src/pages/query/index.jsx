@@ -29,7 +29,7 @@ import {
     setDepartTimeStart,
     setDepartTimeEnd,
     setArriveTimeStart,
-    setArriveTimeEnd,
+    setArriveTimeEnd
 } from '@/redux/action/query';
 import { toggleHighSpeed } from '@/redux/action/home';
 function Index(props) {
@@ -55,7 +55,7 @@ function Index(props) {
         departStations,
         arriveStations,
         trainList,
-        isFiltersVisible,
+        isFiltersVisible
     } = props;
     //请求接口
     useEffect(() => {
@@ -101,10 +101,10 @@ function Index(props) {
                                 ticketType,
                                 trainType,
                                 depStation,
-                                arrStation,
-                            },
-                        },
-                    },
+                                arrStation
+                            }
+                        }
+                    }
                 } = response;
                 dispatch(setSearchParsed(true));
                 dispatch(setTrainList(trains)); //设置车站列表数据
@@ -129,7 +129,7 @@ function Index(props) {
         arriveTimeStart,
         arriveTimeEnd,
         dispatch,
-        searchParsed,
+        searchParsed
     ]);
     const { isPrevDisabled, isNextDisabled, prev, next } = useNav(
         departDate,
@@ -153,7 +153,7 @@ function Index(props) {
                     setDepartTimeStart,
                     setDepartTimeEnd,
                     setArriveTimeStart,
-                    setArriveTimeEnd,
+                    setArriveTimeEnd
                 },
                 dispatch
             ),
@@ -200,7 +200,7 @@ function Index(props) {
 function mapStateToProps(state) {
     return {
         ...state.get('homeState').toJS(),
-        ...state.get('queryState').toJS(),
+        ...state.get('queryState').toJS()
     };
 }
 function mapDispatchToProps(dispatch) {

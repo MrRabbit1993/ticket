@@ -9,7 +9,7 @@ const defaultState = fromJS({
     isLoadingCityData: false,
     isDateSelectorVisible: false,
     departDate: Date.now(),
-    highSpeed: false,
+    highSpeed: false
 });
 export default (state = defaultState, action) => {
     switch (action.type) {

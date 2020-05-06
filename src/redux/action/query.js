@@ -26,7 +26,7 @@ export function prevDate() {
 export function setTrainList(trainList) {
     return {
         type: ActionTypes.ACTION_SET_TRAIN_LIST,
-        payload: trainList,
+        payload: trainList
     };
 }
 
@@ -39,12 +39,12 @@ export function toggleOrderType() {
         if (orderType === ActionTypes.ORDER_DEPART) {
             dispatch({
                 type: ActionTypes.ACTION_SET_ORDER_TYPE,
-                payload: ActionTypes.ORDER_DURATION,
+                payload: ActionTypes.ORDER_DURATION
             });
         } else {
             dispatch({
                 type: ActionTypes.ACTION_SET_ORDER_TYPE,
-                payload: ActionTypes.ORDER_DEPART,
+                payload: ActionTypes.ORDER_DEPART
             });
         }
         dispatch(setSearchParsed(false));
@@ -59,7 +59,7 @@ export function toggleOnlyTickets() {
             .toJS();
         dispatch({
             type: ActionTypes.ACTION_SET_ONLY_TICKETS,
-            payload: !onlyTickets,
+            payload: !onlyTickets
         });
         dispatch(setSearchParsed(false));
     };
@@ -67,73 +67,73 @@ export function toggleOnlyTickets() {
 export function setTicketTypes(ticketTypes) {
     return {
         type: ActionTypes.ACTION_SET_TICKET_TYPES,
-        payload: ticketTypes,
+        payload: ticketTypes
     };
 }
 export function setCheckedTicketTypes(checkedTicketTypes) {
     return {
         type: ActionTypes.ACTION_SET_CHECKED_TICKET_TYPES,
-        payload: checkedTicketTypes,
+        payload: checkedTicketTypes
     };
 }
 export function setTrainTypes(trainTypes) {
     return {
         type: ActionTypes.ACTION_SET_TRAIN_TYPES,
-        payload: trainTypes,
+        payload: trainTypes
     };
 }
 export function setCheckedTrainTypes(checkedTrainTypes) {
     return {
         type: ActionTypes.ACTION_SET_CHECKED_TRAIN_TYPES,
-        payload: checkedTrainTypes,
+        payload: checkedTrainTypes
     };
 }
 export function setDepartStations(departStations) {
     return {
         type: ActionTypes.ACTION_SET_DEPART_STATIONS,
-        payload: departStations,
+        payload: departStations
     };
 }
 export function setCheckedDepartStations(checkedDepartStations) {
     return {
         type: ActionTypes.ACTION_SET_CHECKED_DEPART_STATIONS,
-        payload: checkedDepartStations,
+        payload: checkedDepartStations
     };
 }
 export function setArriveStations(arriveStations) {
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_STATIONS,
-        payload: arriveStations,
+        payload: arriveStations
     };
 }
 export function setCheckedArriveStations(checkedArriveStations) {
     return {
         type: ActionTypes.ACTION_SET_CHECKED_ARRIVE_STATIONS,
-        payload: checkedArriveStations,
+        payload: checkedArriveStations
     };
 }
 export function setDepartTimeStart(departTimeStart) {
     return {
         type: ActionTypes.ACTION_SET_DEPART_TIME_START,
-        payload: departTimeStart,
+        payload: departTimeStart
     };
 }
 export function setDepartTimeEnd(departTimeEnd) {
     return {
         type: ActionTypes.ACTION_SET_DEPART_TIME_END,
-        payload: departTimeEnd,
+        payload: departTimeEnd
     };
 }
 export function setArriveTimeStart(arriveTimeStart) {
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_TIME_START,
-        payload: arriveTimeStart,
+        payload: arriveTimeStart
     };
 }
 export function setArriveTimeEnd(arriveTimeEnd) {
     return {
         type: ActionTypes.ACTION_SET_ARRIVE_TIME_END,
-        payload: arriveTimeEnd,
+        payload: arriveTimeEnd
     };
 }
 export function toggleIsFiltersVisible() {
@@ -146,13 +146,13 @@ export function toggleIsFiltersVisible() {
         }
         dispatch({
             type: ActionTypes.ACTION_SET_IS_FILTERS_VISIBLE,
-            payload: !isFiltersVisible,
+            payload: !isFiltersVisible
         });
     };
 }
 export function setSearchParsed(searchParsed) {
     return {
         type: ActionTypes.ACTION_SET_SEARCH_PARSED,
-        payload: searchParsed,
+        payload: searchParsed
     };
 }

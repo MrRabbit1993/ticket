@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './index.module.less';
-console.log(styles);
 const Choose = memo(function Choose(props) {
     const { passengers, updatePassenger } = props;
     function createSeat(seatType) {
@@ -15,11 +14,11 @@ const Choose = memo(function Choose(props) {
                             data-text={seatType}
                             onClick={() =>
                                 updatePassenger(passenger.id, {
-                                    seat: seatType,
+                                    seat: seatType
                                 })
                             }
                             className={classnames(styles.seat, {
-                                [styles.active]: passenger.seat === seatType,
+                                [styles.active]: passenger.seat === seatType
                             })}
                         >
                             &#xe02d;
@@ -49,6 +48,6 @@ const Choose = memo(function Choose(props) {
 });
 Choose.propTypes = {
     passengers: PropTypes.array.isRequired,
-    updatePassenger: PropTypes.func.isRequired,
+    updatePassenger: PropTypes.func.isRequired
 };
 export default Choose;

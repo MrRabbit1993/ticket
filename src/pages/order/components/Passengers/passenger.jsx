@@ -14,7 +14,7 @@ const Passenger = memo(function Passenger(props) {
         showGenderMenu,
         showFollowAdultMenu,
         showTicketTypeMenu,
-        showFollowAdultName,
+        showFollowAdultName
     } = props;
     const isAdult = ticketType === 'adult';
     return (
@@ -129,6 +129,6 @@ Passenger.propTypes = {
     onUpdate: PropTypes.func.isRequired,
     showFollowAdultMenu: PropTypes.func.isRequired,
     showTicketTypeMenu: PropTypes.func.isRequired,
-    showFollowAdultName: PropTypes.string,
+    showFollowAdultName: PropTypes.string
 };
 export default Passenger;
