@@ -1,16 +1,90 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import URI from 'urijs';
+import dayjs from 'dayjs';
 import styles from './index.module.less';
 import Header from '@/components/Header';
+import Detail from '@/components/Detail';
+import Ticket from './components/Ticket';
+import Passengers from './components/Passengers';
+import {
+    fetchInitial,
+    setSearchParsed,
+    createAdult,
+    createChild,
+    removePassenger,
+    updatePassenger,
+    hideMenu,
+    showGenderMenu,
+    showFollowAdultMenu,
+    showTicketTypeMenu,
+} from '@/redux/action/order';
 const Index = props => {
-    const {} = props;
-    // pathname: `/order/${trainNumber}/${departStation}/${arriveStation}/${type}/${dayjs(departDate).format('YYYY-MM-DD')}`,
+    const {
+        departDate,
+        arriveDate,
+        departTimeStr,
+        arriveTimeStr,
+        durationStr,
+        price,
+        passengers,
+        menu,
+        isMenuVisible,
+        searchParsed,
+        dispatch,
+        match,
+    } = props;
+    const {
+        trainNumber,
+        departStation,
+        arriveStation,
+        type,
+        date,
+    } = match.params;
+    useEffect(() => {
+        dispatch(setSearchParsed(true));
+    }, [dispatch]);
+    useEffect(() => {
+        if (!searchParsed) {
+            return;
+        }
+        const url = new URI('/rest/order')
+            .setSearch('dStation', departStation)
+            .setSearch('aStation', arriveStation)
+            .setSearch('type', type)
+            .setSearch(
+                'date',
+                dayjs(date)
+                    .format('YYYY-MM-DD')
+                    .toString()
+            );
+        dispatch(fetchInitial(url));
+    }, [searchParsed, departStation, arriveStation, type, date, dispatch]);
+    //设置人员回调方法
+    const passengersCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    createAdult,
+                    createChild,
+                    removePassenger,
+                    updatePassenger,
+                    showGenderMenu,
+                    showFollowAdultMenu,
+                    showTicketTypeMenu,
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
+
     return (
         <div className={styles.container}>
             <div className={styles['header-wrapper']}>
-                <Header title="订单填写" />
+                <Header title="订单填写" showBack={true} />
             </div>
-            {/* <div className="detail-wrapper">
+            <div className={styles['content-container']}>
                 <Detail
                     departDate={departDate}
                     arriveDate={arriveDate}
@@ -26,19 +100,19 @@ const Index = props => {
                         style={{ display: 'block' }}
                     ></span>
                 </Detail>
+                <Ticket price={price} type={type} />
+                <Passengers {...passengersCallBacks} passengers={passengers} />
+                {/* {passengers.length > 0 && (
+                    <Choose passengers={passengers} {...chooseCallBack} />
+                )}
+                <Account length={passengers.length} price={price} />
+                <Menu show={isMenuVisible} {...menu} {...menuCallBacks} /> */}
             </div>
-            <Ticket price={price} type={seatType} />
-            <Passengers {...passengersCallBacks} passengers={passengers} />
-            {passengers.length > 0 && (
-                <Choose passengers={passengers} {...chooseCallBack} />
-            )}
-            <Account length={passengers.length} price={price} />
-            <Menu show={isMenuVisible} {...menu} {...menuCallBacks} /> */}
         </div>
     );
 };
 const mapStateToProps = state => {
-    return state;
+    return state.get('orderState').toJS();
 };
 const mapDispatchToProps = dispatch => {
     return { dispatch };

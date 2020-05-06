@@ -161,7 +161,7 @@ function Index(props) {
     );
 }
 function mapStateToProps(state) {
-    return state.get('ticketStatue').toJS();
+    return state.get('ticketState').toJS();
 }
 function mapDispatchToProps(dispatch) {
     return { dispatch };
