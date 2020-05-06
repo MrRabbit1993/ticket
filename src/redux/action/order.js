@@ -260,7 +260,9 @@ export function showFollowAdultMenu(id) {
 
 export function showTicketTypeMenu(id) {
     return (dispatch, getState) => {
-        const { passengers } = getState();
+        const { passengers } = getState()
+            .get('orderState')
+            .toJS();
 
         const passenger = passengers.find(passenger => passenger.id === id);
 

@@ -10,6 +10,7 @@ import Ticket from './components/Ticket';
 import Passengers from './components/Passengers';
 import Choose from './components/Choose';
 import Account from './components/Account';
+import Menu from './components/Menu';
 import {
     fetchInitial,
     setSearchParsed,
@@ -87,6 +88,17 @@ const Index = props => {
         [dispatch]
     );
 
+    //弹出层菜单
+    const menuCallBacks = useMemo(
+        () =>
+            bindActionCreators(
+                {
+                    hideMenu
+                },
+                dispatch
+            ),
+        [dispatch]
+    );
     return (
         <div className={styles.container}>
             <div className={styles['header-wrapper']}>
@@ -114,7 +126,7 @@ const Index = props => {
                     <Choose passengers={passengers} {...chooseCallBack} />
                 )}
                 <Account length={passengers.length} price={price} />
-                {/*<Menu show={isMenuVisible} {...menu} {...menuCallBacks} /> */}
+                <Menu show={isMenuVisible} {...menu} {...menuCallBacks} />
             </div>
         </div>
     );
