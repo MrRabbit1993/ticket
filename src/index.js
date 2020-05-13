@@ -4,7 +4,11 @@ import 'normalize.css';
 import './index.less';
 import '@/common/iconFont.css';
 import RenderRoute from './router';
-// import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<RenderRoute />, document.getElementById('root'));
-// serviceWorker.unregister();
+if (process.env.NODE_ENV === 'production') {
+    serviceWorker.register();
+} else {
+    serviceWorker.unregister();
+}
