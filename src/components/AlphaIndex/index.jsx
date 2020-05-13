@@ -12,6 +12,6 @@ const AlphaIndex = memo(function AlphaIndex(props) {
 });
 AlphaIndex.propTypes = {
     alpha: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
 };
 export default AlphaIndex;

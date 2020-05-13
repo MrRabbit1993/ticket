@@ -14,12 +14,12 @@ function HighSpeed(props) {
                 <input type="hidden" name="highSpeed" value={highSpeed} />
                 <div
                     className={classnames(styles['high-speed-track'], {
-                        [`${styles['checked']}`]: highSpeed
+                        [`${styles['checked']}`]: highSpeed,
                     })}
                 >
                     <span
                         className={classnames(styles['high-speed-handle'], {
-                            [`${styles['checked']}`]: highSpeed
+                            [`${styles['checked']}`]: highSpeed,
                         })}
                     ></span>
                 </div>
@@ -29,6 +29,6 @@ function HighSpeed(props) {
 }
 HighSpeed.propTypes = {
     highSpeed: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired
+    toggle: PropTypes.func.isRequired,
 };
 export default HighSpeed;

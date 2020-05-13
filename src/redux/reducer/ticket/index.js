@@ -11,7 +11,7 @@ const defaultState = fromJS({
     durationStr: null,
     tickets: [],
     isScheduleVisible: false, //浮层
-    searchParsed: false
+    searchParsed: false,
 });
 
 export default (state = defaultState, action) => {

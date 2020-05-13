@@ -10,7 +10,7 @@ const CitySelector = memo(function CitySelector(props) {
         onBack,
         fetchCityData,
         isLoading,
-        onSelect
+        onSelect,
     } = props;
     useEffect(() => {
         if (!show || cityData || isLoading) return;
@@ -64,7 +64,7 @@ const CitySelector = memo(function CitySelector(props) {
                 </div>
                 <i
                     className={classnames(styles['search-clean'], {
-                        hidden: key.length === 0
+                        hidden: key.length === 0,
                     })}
                     onClick={() => setSearchKey('')}
                 >
@@ -81,6 +81,6 @@ CitySelector.propTypes = {
     onBack: PropTypes.func.isRequired,
     fetchCityData: PropTypes.func.isRequired,
     cityData: PropTypes.object,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func.isRequired,
 };
 export default CitySelector;

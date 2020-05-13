@@ -13,6 +13,6 @@ MenuItem.propTypes = {
     title: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     active: PropTypes.bool.isRequired,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
 };
 export default MenuItem;

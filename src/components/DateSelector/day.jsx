@@ -28,6 +28,6 @@ function Day(props) {
     );
 }
 Day.propTypes = {
-    day: Proptypes.number
+    day: Proptypes.number,
 };
 export default Day;

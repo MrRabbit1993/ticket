@@ -14,11 +14,11 @@ const ListItem = memo(function ListItem(props) {
         time,
         priceMsg,
         dayAfter,
-        history
+        history,
     } = props;
     const _navigation = () => {
         history.push({
-            pathname: `/ticket/${date}/${aStation}/${dStation}/${trainNumber}`
+            pathname: `/ticket/${date}/${aStation}/${dStation}/${trainNumber}`,
         });
     };
 
@@ -73,6 +73,6 @@ ListItem.propTypes = {
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     priceMsg: PropTypes.string.isRequired,
-    dayAfter: PropTypes.string.isRequired
+    dayAfter: PropTypes.string.isRequired,
 };
 export default withRouter(ListItem);

@@ -12,6 +12,6 @@ const CityItem = memo(function CityItem(props) {
 });
 CityItem.propTypes = {
     name: PropTypes.string.isRequired,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func.isRequired,
 };
 export default CityItem;

@@ -10,7 +10,7 @@ const Seat = memo(function Seat(props) {
         channels,
         expanded,
         toggle,
-        idx
+        idx,
     } = props;
     return (
         <li className={styles.li}>
@@ -43,6 +43,6 @@ Seat.propTypes = {
     channels: PropTypes.array.isRequired,
     expanded: PropTypes.bool.isRequired,
     toggle: PropTypes.func.isRequired,
-    idx: PropTypes.number.isRequired
+    idx: PropTypes.number.isRequired,
 };
 export default Seat;

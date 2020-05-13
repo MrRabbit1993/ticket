@@ -14,11 +14,11 @@ const Choose = memo(function Choose(props) {
                             data-text={seatType}
                             onClick={() =>
                                 updatePassenger(passenger.id, {
-                                    seat: seatType
+                                    seat: seatType,
                                 })
                             }
                             className={classnames(styles.seat, {
-                                [styles.active]: passenger.seat === seatType
+                                [styles.active]: passenger.seat === seatType,
                             })}
                         >
                             &#xe02d;
@@ -48,6 +48,6 @@ const Choose = memo(function Choose(props) {
 });
 Choose.propTypes = {
     passengers: PropTypes.array.isRequired,
-    updatePassenger: PropTypes.func.isRequired
+    updatePassenger: PropTypes.func.isRequired,
 };
 export default Choose;

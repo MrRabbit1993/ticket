@@ -16,7 +16,7 @@ function Nav(props) {
             <span
                 onClick={prev}
                 className={classnames(styles['nav-prev'], {
-                    [`${styles['nav-disabled']}`]: isPrevDisabled
+                    [`${styles['nav-disabled']}`]: isPrevDisabled,
                 })}
             >
                 前一天
@@ -25,7 +25,7 @@ function Nav(props) {
             <span
                 onClick={next}
                 className={classnames(styles['nav-next'], {
-                    [`${styles['nav-disabled']}`]: isNextDisabled
+                    [`${styles['nav-disabled']}`]: isNextDisabled,
                 })}
             >
                 后一天
@@ -38,6 +38,6 @@ Nav.propTypes = {
     prev: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired,
     isPrevDisabled: PropTypes.bool.isRequired,
-    isNextDisabled: PropTypes.bool.isRequired
+    isNextDisabled: PropTypes.bool.isRequired,
 };
 export default Nav;

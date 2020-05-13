@@ -13,6 +13,6 @@ const List = memo(function List(props) {
     );
 });
 List.propTypes = {
-    list: PropTypes.array.isRequired
+    list: PropTypes.array.isRequired,
 };
 export default List;

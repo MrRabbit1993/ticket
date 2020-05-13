@@ -55,6 +55,6 @@ function Month(props) {
     );
 }
 Month.propTypes = {
-    startingTimeInMonth: Proptypes.number.isRequired
+    startingTimeInMonth: Proptypes.number.isRequired,
 };
 export default Month;

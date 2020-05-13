@@ -11,7 +11,7 @@ const Passengers = memo(function Passengers(props) {
         updatePassenger,
         showGenderMenu,
         showFollowAdultMenu,
-        showTicketTypeMenu
+        showTicketTypeMenu,
     } = props;
     const nameMap = useMemo(() => {
         const ret = {};
@@ -57,6 +57,6 @@ Passengers.propTypes = {
     updatePassenger: PropTypes.func.isRequired,
     showGenderMenu: PropTypes.func.isRequired,
     showFollowAdultMenu: PropTypes.func.isRequired,
-    showTicketTypeMenu: PropTypes.func.isRequired
+    showTicketTypeMenu: PropTypes.func.isRequired,
 };
 export default Passengers;

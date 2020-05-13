@@ -15,6 +15,6 @@ export default function useNav(departDate, dispatch, prevDate, nextDate) {
         isPrevDisabled,
         isNextDisabled,
         prev,
-        next
+        next,
     };
 }

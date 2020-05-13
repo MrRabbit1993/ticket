@@ -13,6 +13,6 @@ function Week(props) {
     );
 }
 Week.propTypes = {
-    days: Proptypes.array.isRequired
+    days: Proptypes.array.isRequired,
 };
 export default Week;

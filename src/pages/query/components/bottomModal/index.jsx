@@ -44,11 +44,11 @@ const ButtomModal = memo(function ButtomModal(props) {
         setDepartTimeEnd,
         setArriveTimeStart,
         setArriveTimeEnd,
-        toggleIsFiltersVisible
+        toggleIsFiltersVisible,
     } = props;
     const [
         localCheckedTicketTypes,
-        localCheckedTicketTypesDispatch
+        localCheckedTicketTypesDispatch,
     ] = useReducer(checkedReducer, checkedTicketTypes, checkedTicketTypes => {
         //本地坐席
         return { ...checkedTicketTypes };
@@ -62,7 +62,7 @@ const ButtomModal = memo(function ButtomModal(props) {
     );
     const [
         localCheckedDepartStations,
-        localCheckedDepartStationsDispatch
+        localCheckedDepartStationsDispatch,
     ] = useReducer(
         checkedReducer,
         checkedDepartStations,
@@ -73,7 +73,7 @@ const ButtomModal = memo(function ButtomModal(props) {
     );
     const [
         localCheckedArriveStations,
-        localCheckedArriveStationsDispatch
+        localCheckedArriveStationsDispatch,
     ] = useReducer(
         checkedReducer,
         checkedArriveStations,
@@ -97,7 +97,7 @@ const ButtomModal = memo(function ButtomModal(props) {
             // checkedMap: checkedTicketTypes
             checkedMap: localCheckedTicketTypes, //使用缓存区的数据，而不是用redux
             // update: setLocalCheckedTicketTypes
-            dispatch: localCheckedTicketTypesDispatch
+            dispatch: localCheckedTicketTypesDispatch,
         },
         {
             title: '车次类型',
@@ -105,7 +105,7 @@ const ButtomModal = memo(function ButtomModal(props) {
             // checkedMap: checkedTrainTypes
             checkedMap: localCheckedTrainTypes, //使用缓存区的数据，而不是用redux
             // update: setLocalCheckedTrainTypes
-            dispatch: localCheckedTrainTypesDispatch
+            dispatch: localCheckedTrainTypesDispatch,
         },
         {
             title: '出发车站',
@@ -113,7 +113,7 @@ const ButtomModal = memo(function ButtomModal(props) {
             // checkedMap: checkedDepartStations
             checkedMap: localCheckedDepartStations, //使用缓存区的数据，而不是用redux
             // update: setLocalCheckedDepartStations
-            dispatch: localCheckedDepartStationsDispatch
+            dispatch: localCheckedDepartStationsDispatch,
         },
         {
             title: '到达车站',
@@ -121,8 +121,8 @@ const ButtomModal = memo(function ButtomModal(props) {
             // checkedMap: checkedArriveStations
             checkedMap: localCheckedArriveStations, //使用缓存区的数据，而不是用redux
             // update: setLocalCheckedArriveStations
-            dispatch: localCheckedArriveStationsDispatch
-        }
+            dispatch: localCheckedArriveStationsDispatch,
+        },
     ];
     const sure = () => {
         setCheckedTicketTypes(localCheckedTicketTypes); //提交车票类型redux
@@ -153,7 +153,7 @@ const ButtomModal = memo(function ButtomModal(props) {
             localDepartTimeStart,
             localDepartTimeEnd,
             localArriveTimeStart,
-            localArriveTimeEnd
+            localArriveTimeEnd,
         ]
     );
     const reset = () => {
@@ -174,7 +174,7 @@ const ButtomModal = memo(function ButtomModal(props) {
                     <div className={styles.title}>
                         <span
                             className={classnames(styles.rest, {
-                                [`${styles.disabled}`]: isResetDisabled
+                                [`${styles.disabled}`]: isResetDisabled,
                             })}
                             onClick={reset}
                         >
@@ -229,6 +229,6 @@ ButtomModal.protoTypes = {
     setDepartTimeEnd: PropTypes.func.isRequired,
     setArriveTimeStart: PropTypes.func.isRequired,
     setArriveTimeEnd: PropTypes.func.isRequired,
-    toggleIsFiltersVisible: PropTypes.func.isRequired
+    toggleIsFiltersVisible: PropTypes.func.isRequired,
 };
 export default ButtomModal;

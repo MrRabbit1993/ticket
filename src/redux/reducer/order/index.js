@@ -10,7 +10,7 @@ const defaultState = fromJS({
     passengers: [],
     menu: null,
     isMenuVisible: false,
-    searchParsed: false
+    searchParsed: false,
 });
 export default (state = defaultState, action) => {
     switch (action.type) {

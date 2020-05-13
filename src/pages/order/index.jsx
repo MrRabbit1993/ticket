@@ -21,7 +21,7 @@ import {
     hideMenu,
     showGenderMenu,
     showFollowAdultMenu,
-    showTicketTypeMenu
+    showTicketTypeMenu,
 } from '@/redux/action/order';
 const Index = props => {
     const {
@@ -36,14 +36,14 @@ const Index = props => {
         isMenuVisible,
         searchParsed,
         dispatch,
-        match
+        match,
     } = props;
     const {
         trainNumber,
         departStation,
         arriveStation,
         type,
-        date
+        date,
     } = match.params;
     useEffect(() => {
         document.title = '订单填写';
@@ -76,7 +76,7 @@ const Index = props => {
                     updatePassenger,
                     showGenderMenu,
                     showFollowAdultMenu,
-                    showTicketTypeMenu
+                    showTicketTypeMenu,
                 },
                 dispatch
             ),
@@ -93,7 +93,7 @@ const Index = props => {
         () =>
             bindActionCreators(
                 {
-                    hideMenu
+                    hideMenu,
                 },
                 dispatch
             ),

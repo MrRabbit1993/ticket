@@ -33,6 +33,6 @@ Menu.propTypes = {
     show: PropTypes.bool.isRequired,
     options: PropTypes.array,
     onPress: PropTypes.func,
-    hideMenu: PropTypes.func.isRequired
+    hideMenu: PropTypes.func.isRequired,
 };
 export default Menu;

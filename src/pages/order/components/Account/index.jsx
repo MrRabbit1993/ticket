@@ -9,7 +9,7 @@ const Account = memo(function Account(props) {
         <div className={styles.account}>
             <div
                 className={classnames(styles.price, {
-                    [styles.expanded]: expanded
+                    [styles.expanded]: expanded,
                 })}
                 onClick={() => setExpanded(!expanded)}
             >
@@ -36,6 +36,6 @@ const Account = memo(function Account(props) {
 });
 Account.propTypes = {
     price: PropTypes.number,
-    length: PropTypes.number.isRequired
+    length: PropTypes.number.isRequired,
 };
 export default Account;

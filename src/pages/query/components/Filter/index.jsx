@@ -7,7 +7,7 @@ const Filter = memo(function Filter(props) {
     return (
         <li
             className={classnames(styles.li, {
-                [`${styles.checked}`]: checked
+                [`${styles.checked}`]: checked,
             })}
             onClick={() => dispatch({ payload: value, type: 'toggle' })}
         >
@@ -18,6 +18,6 @@ const Filter = memo(function Filter(props) {
 Filter.protoTypes = {
     name: PropTypes.string.isRequired,
     checked: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired
+    toggle: PropTypes.func.isRequired,
 };
 export default Filter;

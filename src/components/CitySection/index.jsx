@@ -24,6 +24,6 @@ const CitySection = memo(function CitySection(props) {
 CitySection.propTypes = {
     title: PropTypes.string.isRequired,
     cities: PropTypes.array,
-    onSelect: PropTypes.func.isRequired
+    onSelect: PropTypes.func.isRequired,
 };
 export default CitySection;
