@@ -10,7 +10,7 @@ const defaultState = fromJS({
     passengers: [],
     menu: null,
     isMenuVisible: false,
-    searchParsed: false,
+    searchParsed: false
 });
 export default (state = defaultState, action) => {
     switch (action.type) {
@@ -29,7 +29,6 @@ export default (state = defaultState, action) => {
         case ActionTypes.ACTION_SET_PASSENGERS: //增加成人乘客
             return state.set('passengers', action.payload);
         case ActionTypes.ACTION_SET_MENU: //修改菜单
-            console.log(action);
             return state.set('menu', action.payload);
         case ActionTypes.ACTION_SET_IS_MENU_VISIBLE: //切换浮层
             return state.set('isMenuVisible', action.payload);

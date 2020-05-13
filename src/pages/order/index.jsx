@@ -11,6 +11,7 @@ import Passengers from './components/Passengers';
 import Choose from './components/Choose';
 import Account from './components/Account';
 import Menu from './components/Menu';
+
 import {
     fetchInitial,
     setSearchParsed,
@@ -21,7 +22,7 @@ import {
     hideMenu,
     showGenderMenu,
     showFollowAdultMenu,
-    showTicketTypeMenu,
+    showTicketTypeMenu
 } from '@/redux/action/order';
 const Index = props => {
     const {
@@ -36,14 +37,14 @@ const Index = props => {
         isMenuVisible,
         searchParsed,
         dispatch,
-        match,
+        match
     } = props;
     const {
         trainNumber,
         departStation,
         arriveStation,
         type,
-        date,
+        date
     } = match.params;
     useEffect(() => {
         document.title = '订单填写';
@@ -76,7 +77,7 @@ const Index = props => {
                     updatePassenger,
                     showGenderMenu,
                     showFollowAdultMenu,
-                    showTicketTypeMenu,
+                    showTicketTypeMenu
                 },
                 dispatch
             ),
@@ -93,7 +94,7 @@ const Index = props => {
         () =>
             bindActionCreators(
                 {
-                    hideMenu,
+                    hideMenu
                 },
                 dispatch
             ),
@@ -121,10 +122,15 @@ const Index = props => {
                     ></span>
                 </Detail>
                 <Ticket price={price} type={type} />
-                <Passengers {...passengersCallBacks} passengers={passengers} />
-                {passengers.length > 0 && (
-                    <Choose passengers={passengers} {...chooseCallBack} />
-                )}
+                <div className={styles.passengers}>
+                    <Passengers
+                        {...passengersCallBacks}
+                        passengers={passengers}
+                    />
+                    {passengers.length > 0 && (
+                        <Choose passengers={passengers} {...chooseCallBack} />
+                    )}
+                </div>
                 <Account length={passengers.length} price={price} />
                 <Menu show={isMenuVisible} {...menu} {...menuCallBacks} />
             </div>

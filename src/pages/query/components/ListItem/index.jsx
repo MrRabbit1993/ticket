@@ -12,7 +12,7 @@ const ListItem = memo(function ListItem(props) {
         date,
         time,
         priceMsg,
-        dayAfter,
+        dayAfter
     } = props;
     const url = useMemo(
         () =>
@@ -70,6 +70,6 @@ ListItem.propTypes = {
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     priceMsg: PropTypes.string.isRequired,
-    dayAfter: PropTypes.string.isRequired,
+    dayAfter: PropTypes.string.isRequired
 };
 export default ListItem;

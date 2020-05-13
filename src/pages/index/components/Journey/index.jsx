@@ -42,6 +42,6 @@ Journey.propTypes = {
     from: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     exchangeFromTo: PropTypes.func.isRequired,
-    showCitySelector: PropTypes.func.isRequired,
+    showCitySelector: PropTypes.func.isRequired
 };
 export default Journey;

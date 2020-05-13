@@ -15,14 +15,14 @@ const ScheduleRow = memo(function ScheduleRow(props) {
         isDepartStation,
         isArriveStation,
         beforeDepartStation,
-        afterArriveStation,
+        afterArriveStation
     } = props;
     return (
         <li className={styles.li}>
             <div
                 className={classnames(styles.icon, {
                     [`${styles['icon-red']}`]:
-                        isArriveStation || isDepartStation,
+                        isArriveStation || isDepartStation
                 })}
             >
                 {isDepartStation
@@ -34,27 +34,26 @@ const ScheduleRow = memo(function ScheduleRow(props) {
             <div
                 className={classnames(styles.row, {
                     [`${styles['gry']}`]:
-                        beforeDepartStation || afterArriveStation, //之前的车站或者之后的车站
+                        beforeDepartStation || afterArriveStation //之前的车站或者之后的车站
                 })}
             >
                 <span
                     className={classnames(styles.station, {
-                        [`${styles['red']}`]:
-                            isArriveStation || isDepartStation, //出发站或者到达站
+                        [`${styles['red']}`]: isArriveStation || isDepartStation //出发站或者到达站
                     })}
                 >
                     {station}
                 </span>
                 <span
                     className={classnames(styles.arrtime, {
-                        [`${styles['red']}`]: isArriveStation,
+                        [`${styles['red']}`]: isArriveStation
                     })}
                 >
                     {isArriveStation ? '始发站' : arriveTime}
                 </span>
                 <span
                     className={classnames(styles.depttime, {
-                        [`${styles['red']}`]: isDepartStation,
+                        [`${styles['red']}`]: isDepartStation
                     })}
                 >
                     {isEndStation ? '终到站' : departTime}

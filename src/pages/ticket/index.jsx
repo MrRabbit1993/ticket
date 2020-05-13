@@ -24,7 +24,7 @@ import {
     setArriveTimeStr,
     setArriveDate,
     setDurationStr,
-    setTickets,
+    setTickets
 } from '@/redux/action/ticket';
 const Schedule = lazy(() => import('./components/Schedule'));
 function Index(props) {
@@ -40,7 +40,7 @@ function Index(props) {
         tickets,
         isScheduleVisible, //浮层
         searchParsed,
-        dispatch,
+        dispatch
     } = props;
     const { dStation, aStation, trainNumber, date } = match.params;
 
@@ -82,7 +82,7 @@ function Index(props) {
                     departTimeStr,
                     arriveTimeStr,
                     arriveDate,
-                    durationStr,
+                    durationStr
                 } = detail;
                 dispatch(setDepartTimeStr(departTimeStr)); //更新起始时间（十分）
                 dispatch(setArriveTimeStr(arriveTimeStr)); //更新到达站时分
@@ -134,7 +134,7 @@ function Index(props) {
                             trainNumber,
                             departStation,
                             arriveStation,
-                            departDate,
+                            departDate
                         }}
                     >
                         <Candidate tickets={tickets} />

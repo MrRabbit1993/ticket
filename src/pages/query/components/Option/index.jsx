@@ -26,6 +26,6 @@ Option.protoTypes = {
     title: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
     checkMap: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired
 };
 export default Option;

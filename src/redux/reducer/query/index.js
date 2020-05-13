@@ -17,7 +17,7 @@ const defaultState = fromJS({
     arriveTimeStart: 0, //到达开始时间
     arriveTimeEnd: 24, //到达截止时间
     isFiltersVisible: false, //浮层
-    searchParsed: false,
+    searchParsed: false
 });
 
 export default (state = defaultState, action) => {

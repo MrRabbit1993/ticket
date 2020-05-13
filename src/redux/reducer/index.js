@@ -9,6 +9,6 @@ const reducer = combineReducers({
     homeState: indexReducer,
     queryState: queryReducer,
     ticketState: ticketReducer,
-    orderState: orderReducer,
+    orderState: orderReducer
 });
 export default reducer;

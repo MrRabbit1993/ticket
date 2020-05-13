@@ -19,7 +19,7 @@ import {
     showDateSelector,
     hideDateSelector,
     setDepartDate,
-    toggleHighSpeed,
+    toggleHighSpeed
 } from '@/redux/action/home';
 import { setSearchParsed } from '@/redux/action/query';
 function Index(props) {
@@ -33,7 +33,7 @@ function Index(props) {
         departDate,
         isDateSelectorVisible,
         highSpeed,
-        history,
+        history
     } = props;
     //日期选择插件的方法集合
     const JourneyCallBacks = useMemo(
@@ -41,7 +41,7 @@ function Index(props) {
             bindActionCreators(
                 {
                     exchangeFromTo,
-                    showCitySelector,
+                    showCitySelector
                 },
                 dispatch
             ),
@@ -55,7 +55,7 @@ function Index(props) {
                 {
                     onBack: hideCitySelector,
                     fetchCityData,
-                    onSelect: setSelectedCity,
+                    onSelect: setSelectedCity
                 },
                 dispatch
             ),
@@ -66,7 +66,7 @@ function Index(props) {
         () =>
             bindActionCreators(
                 {
-                    onClick: showDateSelector,
+                    onClick: showDateSelector
                 },
                 dispatch
             ),
@@ -77,7 +77,7 @@ function Index(props) {
         () =>
             bindActionCreators(
                 {
-                    onBack: hideDateSelector,
+                    onBack: hideDateSelector
                 },
                 dispatch
             ),
@@ -98,7 +98,7 @@ function Index(props) {
         () =>
             bindActionCreators(
                 {
-                    toggle: toggleHighSpeed,
+                    toggle: toggleHighSpeed
                 },
                 dispatch
             ),

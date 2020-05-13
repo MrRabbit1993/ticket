@@ -33,6 +33,6 @@ function Header(props) {
 Header.propTypes = {
     title: PropTypes.string.isRequired,
     onBack: PropTypes.func,
-    showBack: PropTypes.bool,
+    showBack: PropTypes.bool
 };
 export default withRouter(Header);

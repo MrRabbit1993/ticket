@@ -10,13 +10,13 @@ const Channel = memo(function(props) {
         trainNumber,
         departStation,
         arriveStation,
-        departDate,
+        departDate
     } = useContext(TrainContext);
     const _nativer = () => {
         history.push({
             pathname: `/order/${trainNumber}/${departStation}/${arriveStation}/${type}/${dayjs(
                 departDate
-            ).format('YYYY-MM-DD')}`,
+            ).format('YYYY-MM-DD')}`
         });
     };
     return (
@@ -34,6 +34,6 @@ const Channel = memo(function(props) {
 Channel.propTypes = {
     name: PropTypes.string.isRequired,
     desc: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
 };
 export default withRouter(Channel);

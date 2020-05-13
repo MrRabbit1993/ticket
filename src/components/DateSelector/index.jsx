@@ -36,6 +36,6 @@ function DateSelector(props) {
 DateSelector.propTypes = {
     show: Proptypes.bool.isRequired,
     onSelect: Proptypes.func.isRequired,
-    onBack: Proptypes.func.isRequired,
+    onBack: Proptypes.func.isRequired
 };
 export default DateSelector;

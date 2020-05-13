@@ -11,7 +11,7 @@ function DepartDate(props) {
     const h0ofDepar = h0(time); //取掉小时分钟秒毫秒
     const departDate = new Date(h0ofDepar);
     const departDateString = useMemo(() => dayjs(time).format('YYYY-MM-DD'), [
-        time,
+        time
     ]);
     const isTodaye = h0ofDepar === h0();
     const weekString =
@@ -28,6 +28,6 @@ function DepartDate(props) {
 }
 DepartDate.propTyps = {
     time: PropTyps.number.isRequired,
-    onClick: PropTyps.func.isRequired,
+    onClick: PropTyps.func.isRequired
 };
 export default DepartDate;
